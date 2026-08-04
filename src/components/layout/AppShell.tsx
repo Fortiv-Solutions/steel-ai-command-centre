@@ -328,14 +328,6 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
 
           <div className="flex items-center gap-2.5">
-            <span className="hidden text-[11px] font-bold text-[#4A5059] xl:inline">Updated 2m ago</span>
-            <Badge
-              variant="outline"
-              className="hidden border-[#A6ACB6] bg-[#E4E8EE] text-[10px] font-bold text-[#4A5059] md:flex"
-            >
-              Zero-Hardware OS
-            </Badge>
-
             <button
               title="Notifications"
               className="relative grid size-8 place-items-center rounded-md border border-[#A6ACB6] bg-[#E4E8EE] text-[#1A1D20] transition-colors hover:bg-[#C8D0DC]"
