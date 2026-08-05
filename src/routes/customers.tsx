@@ -52,31 +52,31 @@ function Page() {
       <Panel title="Customer Order Backlog & Credit Limit Utilization" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Customer Entity</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Steel Grade Ordered</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Order Tonnage</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Credit Sanction Limit</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Credit Utilization</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Production Status</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Promised Delivery</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Customer Entity</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Steel Grade Ordered</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Order Tonnage</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Credit Sanction Limit</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Credit Utilization</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Production Status</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Promised Delivery</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {customerOrders.map((c) => (
-              <TableRow key={c.customer} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-bold text-xs text-[#1A1D20]">{c.customer}</TableCell>
-                <TableCell className="text-xs font-bold text-[#D95A00]">{c.grade}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#1A1D20]">{c.quantity}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#4A5059]">{c.limit}</TableCell>
+              <TableRow key={c.customer} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-bold text-xs text-[#0F172A]">{c.customer}</TableCell>
+                <TableCell className="text-xs font-bold text-[#E05600]">{c.grade}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{c.quantity}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#475569]">{c.limit}</TableCell>
                 <TableCell className="w-40">
                   <div className="flex items-center gap-2">
                     <Meter value={c.creditUtil} tone={c.creditUtil > 80 ? "warning" : "primary"} />
-                    <span className="text-[10px] font-bold text-[#4A5059]">{c.creditUtil}%</span>
+                    <span className="text-[10px] font-bold text-[#475569]">{c.creditUtil}%</span>
                   </div>
                 </TableCell>
                 <TableCell><Pill tone={statusTone(c.status)}>{c.status}</Pill></TableCell>
-                <TableCell className="text-xs font-bold text-[#4A5059]">{c.delivery}</TableCell>
+                <TableCell className="text-xs font-bold text-[#475569]">{c.delivery}</TableCell>
               </TableRow>
             ))}
           </TableBody>

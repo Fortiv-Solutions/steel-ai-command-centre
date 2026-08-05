@@ -1,13 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
+  Activity,
   CheckCircle2,
-  Clock,
   Factory,
-  FileCheck,
   FileText,
+  Sliders,
 } from "lucide-react";
-import { PageHeader, Panel, Pill, StatCard, statusTone } from "@/components/ui-kit";
-import { BarSeries } from "@/components/charts";
+import { PageHeader, Panel, Pill, StatCard } from "@/components/ui-kit";
 import {
   Table,
   TableBody,
@@ -20,74 +19,60 @@ import {
 export const Route = createFileRoute("/production")({
   head: () => ({
     meta: [
-      { title: "Production & Shop-Floor Documents · Steel AI Command Center" },
-      { name: "description", content: "Production plans, shift logs, melting and rolling documentation, and yield reporting." },
+      { title: "Production Documents & Schedules · Steel AI Command Center" },
+      { name: "description", content: "Daily melt shop schedules, rolling mill campaigns, and shift production logs." },
     ],
   }),
   component: Page,
 });
 
-const productionDocs = [
-  { id: "DOC-PRD-401", title: "Melt Shop Shift Log A - EAF Heat Output", shopUnit: "Melt Shop 1", shift: "Shift A", tonnage: "1,240 MT", adherence: 96, status: "Validated" },
-  { id: "DOC-PRD-402", title: "Bar & TMT Rolling Mill 2 Daily Yield Report", shopUnit: "Rolling Mill 2", shift: "Shift A", tonnage: "1,850 MT", adherence: 94, status: "Validated" },
-  { id: "DOC-PRD-403", title: "Continuous Caster 2 Strand Tonnage Record", shopUnit: "Concast Unit 2", shift: "Shift B", tonnage: "1,120 MT", adherence: 92, status: "Pending Review" },
-  { id: "DOC-PRD-404", title: "Billet Reheating Furnace Fuel Consumption Log", shopUnit: "Reheating Furnace", shift: "Shift B", tonnage: "1,680 MT", adherence: 98, status: "Validated" },
-];
-
-const millProductionOutput = [
-  { month: "Jan", meltOutput: 42000, rolledOutput: 39500 },
-  { month: "Feb", meltOutput: 44500, rolledOutput: 41800 },
-  { month: "Mar", meltOutput: 46800, rolledOutput: 44200 },
-  { month: "Apr", meltOutput: 48200, rolledOutput: 45600 },
+const productionSchedules = [
+  { docNo: "PROD-SCH-2026-081", mill: "Bar Mill Unit 2", targetTonnage: "1,250 MT", grade: "Fe 550D TMT (16mm)", shift: "Shift A & B", status: "In Progress" },
+  { docNo: "PROD-SCH-2026-082", mill: "Hot Strip Mill 1", targetTonnage: "2,400 MT", grade: "304L HR Coil (4mm)", shift: "Shift A", status: "Scheduled" },
+  { docNo: "PROD-SCH-2026-083", mill: "Wire Rod Mill", targetTonnage: "850 MT", grade: "SAE 1008 Rod (5.5mm)", shift: "Shift C", status: "Completed" },
 ];
 
 function Page() {
   return (
     <div className="space-y-5">
       <PageHeader
-        eyebrow="Production Documentation"
-        title="Planning & Shop-Floor Documentation OS"
-        description="Production plans, shift logs, melting and rolling documentation, yield reporting, and maintenance records."
+        eyebrow="Manufacturing"
+        title="Production Documents & Rolling Campaigns"
+        description="Daily melt shop heat plans, rolling mill campaign schedules, billet sizing, and shift production logs."
       />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Monthly Production Docs" value="41,200" delta={7.4} hint="digitized shop logs" icon={FileText} />
-        <StatCard label="Plan Adherence" value="94.2%" delta={2.6} hint="production target" icon={CheckCircle2} />
-        <StatCard label="Shift Log Automation" value="88%" delta={12.4} hint="straight-through" icon={FileCheck} />
-        <StatCard label="Report Turnaround" value="9 mins" delta={-71.0} hint="instant processing" icon={Clock} />
+        <StatCard label="Daily Target Tonnage" value="4,500 MT" delta={2.4} hint="vs capacity 4,600 MT" icon={Factory} />
+        <StatCard label="Rolling Mill Utilization" value="94.2%" hint="OEE benchmark 92%" icon={Activity} />
+        <StatCard label="Campaign Accuracy" value="99.6%" hint="zero roll change delay" icon={CheckCircle2} />
+        <StatCard label="Shift Logs Filed" value="100% Digital" hint="instant ERP sync" icon={FileText} />
       </div>
 
-      <Panel title="Shop-Floor Production Log & Plan Adherence Register" bare>
+      <Panel title="Active Production Campaign Schedules & Shift Work Orders" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Doc ID</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Document Title</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Mill / Shop Unit</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Shift</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Shift Tonnage Output</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Plan Adherence %</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Validation Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Document No</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Mill / Unit</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Target Tonnage</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Grade & Section</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Assigned Shift</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Execution Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {productionDocs.map((p) => (
-              <TableRow key={p.id} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{p.id}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{p.title}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{p.shopUnit}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{p.shift}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#D95A00]">{p.tonnage}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#B87514]">{p.adherence}%</TableCell>
-                <TableCell><Pill tone={statusTone(p.status)}>{p.status}</Pill></TableCell>
+            {productionSchedules.map((p) => (
+              <TableRow key={p.docNo} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{p.docNo}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{p.mill}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{p.targetTonnage}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{p.grade}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{p.shift}</TableCell>
+                <TableCell><Pill tone="info">{p.status}</Pill></TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </Panel>
-
-      <Panel title="Liquid Melt Output vs Finished Rolled Steel Production Tonnage (MT)">
-        <BarSeries data={millProductionOutput} x="month" series={[{ key: "meltOutput", label: "Melt Shop Liquid Tonnage" }, { key: "rolledOutput", label: "Finished Rolled Tonnage" }]} height={220} />
       </Panel>
     </div>
   );

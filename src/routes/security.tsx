@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  AlertTriangle,
   CheckCircle2,
-  KeyRound,
+  Key,
   Lock,
+  Shield,
   ShieldCheck,
 } from "lucide-react";
 import { PageHeader, Panel, Pill, StatCard } from "@/components/ui-kit";
@@ -19,18 +19,17 @@ import {
 export const Route = createFileRoute("/security")({
   head: () => ({
     meta: [
-      { title: "Security & Audit Matrix · Steel AI Command Center" },
-      { name: "description", content: "Active sessions, security policies, TLS encryption, and audit log." },
+      { title: "Security & Audit Logs · Steel AI Command Center" },
+      { name: "description", content: "Role-based access control (RBAC), single sign-on (SSO), data encryption, and audit logs." },
     ],
   }),
   component: Page,
 });
 
-const securityLogs = [
-  { id: "SEC-9041", event: "Multi-Factor Auth Verified", user: "a.verma@steelco.com", ip: "192.168.4.12", location: "Jamshedpur HQ", timestamp: "10 mins ago", status: "Passed" },
-  { id: "SEC-9042", event: "API Key Generated for SAP Connector", user: "SYSTEM_BOT", ip: "10.0.8.4", location: "Server Room 1", timestamp: "25 mins ago", status: "Passed" },
-  { id: "SEC-9043", event: "Failed Password Attempt (1/3)", user: "k.das@steelco.com", ip: "192.168.12.88", location: "Lab Station 3", timestamp: "1 hr ago", status: "Flagged" },
-  { id: "SEC-9044", event: "Document Export Sealed with SHA-256", user: "p.nair@steelco.com", ip: "192.168.2.14", location: "QA Office", timestamp: "2 hrs ago", status: "Passed" },
+const securityAuditLogs = [
+  { id: "LOG-8801", event: "Executive Copilot Query Execution", user: "a.verma@steelco.com", ip: "10.4.12.84", location: "Angul Plant HQ", timestamp: "Today 11:14:02", status: "Verified Audit" },
+  { id: "LOG-8802", event: "MTC Certificate Auto-Signature Key Access", user: "r.sharma@steelco.com", ip: "10.4.14.12", location: "Quality Lab", timestamp: "Today 10:45:18", status: "Verified Audit" },
+  { id: "LOG-8803", event: "Scrap Rate Contract Policy Override Attempt", user: "v.kumar@steelco.com", ip: "10.2.04.55", location: "Jamshedpur Unit", timestamp: "Today 09:12:40", status: "Logged & Approved" },
 ];
 
 function Page() {
@@ -38,42 +37,40 @@ function Page() {
     <div className="space-y-5">
       <PageHeader
         eyebrow="Platform"
-        title="Security & Access Audit Matrix"
-        description="Zero-trust network access, encrypted credentials, active sessions, and audit logging."
+        title="Security & Enterprise Audit Center"
+        description="Role-based access control (RBAC), SOC 2 compliance, TLS encryption, API key management, and audit logs."
       />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Active Sessions" value="284" hint="authenticated" icon={KeyRound} />
-        <StatCard label="MFA Coverage" value="100%" hint="enforced for all" icon={ShieldCheck} />
-        <StatCard label="Failed Logins 24h" value="3" hint="zero breaches" icon={AlertTriangle} />
-        <StatCard label="Encryption" value="AES-256" hint="at rest & transit" icon={Lock} />
+        <StatCard label="Security Status" value="SOC 2 Type II" hint="100% compliant" icon={ShieldCheck} />
+        <StatCard label="SSO & MFA Status" value="Enforced" hint="SAML 2.0 / Azure AD" icon={Key} />
+        <StatCard label="API Key Encryption" value="AES-256 GCM" hint="rotated 90 days" icon={Lock} />
+        <StatCard label="Audit Log Retention" value="7 Years" hint="tamper-proof ledger" icon={Shield} />
       </div>
 
-      <Panel title="Real-Time Security & Audit Trail" bare>
+      <Panel title="Real-Time Enterprise Security & Access Audit Trail" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Log ID</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Security Event</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">User Principal</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">IP Address</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Location Scope</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Timestamp</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Audit Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Log ID</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Security Event</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">User Principal</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">IP Address</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Location Scope</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Timestamp</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Audit Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {securityLogs.map((l) => (
-              <TableRow key={l.id} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{l.id}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{l.event}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{l.user}</TableCell>
-                <TableCell className="font-mono text-xs font-bold text-[#1A1D20]">{l.ip}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{l.location}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{l.timestamp}</TableCell>
-                <TableCell>
-                  <Pill tone={l.status === "Passed" ? "success" : "warning"}>{l.status}</Pill>
-                </TableCell>
+            {securityAuditLogs.map((l) => (
+              <TableRow key={l.id} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{l.id}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{l.event}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{l.user}</TableCell>
+                <TableCell className="font-mono text-xs font-bold text-[#0F172A]">{l.ip}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{l.location}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{l.timestamp}</TableCell>
+                <TableCell><Pill tone="success">{l.status}</Pill></TableCell>
               </TableRow>
             ))}
           </TableBody>

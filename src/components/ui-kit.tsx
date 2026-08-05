@@ -14,16 +14,16 @@ export function PageHeader({
   actions?: ReactNode;
 }) {
   return (
-    <div className="mb-5 flex flex-wrap items-end justify-between gap-4 border-b border-[#A6ACB6] pb-4">
+    <div className="mb-5 flex flex-wrap items-end justify-between gap-4 border-b border-[#E2E8F0] pb-4">
       <div className="min-w-0">
         {eyebrow && (
-          <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-[#D95A00]">
+          <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-[#E05600]">
             {eyebrow}
           </p>
         )}
-        <h1 className="text-xl font-bold tracking-tight text-[#1A1D20] lg:text-2xl">{title}</h1>
+        <h1 className="text-xl font-bold tracking-tight text-[#0F172A] lg:text-2xl">{title}</h1>
         {description && (
-          <p className="mt-1 max-w-3xl text-xs text-[#4A5059]">{description}</p>
+          <p className="mt-1 max-w-3xl text-xs text-[#475569]">{description}</p>
         )}
       </div>
       {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
@@ -48,14 +48,14 @@ export function Panel({
 }) {
   return (
     <section
-      className={cn("rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] text-[#1A1D20]", className)}
+      className={cn("rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] text-[#0F172A]", className)}
     >
       {(title || actions) && (
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#A6ACB6] px-4 py-3 bg-[#DCE0E6]">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E2E8F0] px-4 py-3 bg-[#F1F5F9]">
           <div className="min-w-0">
-            {title && <h2 className="text-xs font-bold uppercase tracking-wider text-[#1A1D20]">{title}</h2>}
+            {title && <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">{title}</h2>}
             {description && (
-              <p className="mt-0.5 text-[11px] text-[#4A5059]">{description}</p>
+              <p className="mt-0.5 text-[11px] text-[#475569]">{description}</p>
             )}
           </div>
           {actions}
@@ -81,15 +81,15 @@ export function StatCard({
 }) {
   const up = (delta ?? 0) >= 0;
   return (
-    <div className="flex h-[88px] flex-col justify-between rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] p-3.5 transition-colors hover:border-[#7A808A]">
+    <div className="flex h-[88px] flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5 transition-colors hover:border-[#CBD5E1]">
       <div className="flex items-center justify-between gap-2">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-[#4A5059]">
+        <p className="text-[10px] font-bold uppercase tracking-wider text-[#475569]">
           {label}
         </p>
-        {Icon && <Icon className="size-3.5 text-[#7A808A]" />}
+        {Icon && <Icon className="size-3.5 text-[#64748B]" />}
       </div>
       <div className="flex items-baseline justify-between gap-2">
-        <p className="text-xl font-bold tabular-nums text-[#1A1D20]">{value}</p>
+        <p className="text-xl font-bold tabular-nums text-[#0F172A]">{value}</p>
         <div className="flex items-center gap-1">
           {delta !== undefined && (
             <span
@@ -103,7 +103,7 @@ export function StatCard({
               {String(delta).includes(".") ? "%" : ""}
             </span>
           )}
-          {hint && <span className="truncate text-[10px] text-[#4A5059]">{hint}</span>}
+          {hint && <span className="truncate text-[10px] text-[#475569]">{hint}</span>}
         </div>
       </div>
     </div>
@@ -111,12 +111,12 @@ export function StatCard({
 }
 
 const toneMap = {
-  success: "border-[#B87514]/40 bg-[#B87514]/15 text-[#7B4C05]", // Industrial Amber
-  warning: "border-[#B8561B]/40 bg-[#B8561B]/15 text-[#863A08]", // Burnt Orange
-  destructive: "border-[#9B3227]/40 bg-[#9B3227]/15 text-[#772118]", // Brick Red
-  info: "border-[#7A808A]/40 bg-[#7A808A]/15 text-[#2C3036]", // Steel Silver
-  neutral: "border-[#A6ACB6] bg-[#C8D0DC] text-[#33373E]", // Steel Slate
-  primary: "border-[#D95A00]/40 bg-[#D95A00]/15 text-[#A04200]", // Molten Orange
+  success: "border-[#B87514]/40 bg-[#FFFBEB] text-[#7B4C05]",
+  warning: "border-[#B8561B]/40 bg-[#FFF7ED] text-[#863A08]",
+  destructive: "border-[#9B3227]/40 bg-[#FEF2F2] text-[#772118]",
+  info: "border-[#64748B]/40 bg-[#F8FAFC] text-[#1E293B]",
+  neutral: "border-[#E2E8F0] bg-[#F1F5F9] text-[#334155]",
+  primary: "border-[#FDBA74] bg-[#FFF7ED] text-[#C2410C]",
 } as const;
 
 export type Tone = keyof typeof toneMap;
@@ -162,9 +162,9 @@ export function Meter({ value, tone = "primary" }: { value: number; tone?: Tone 
         ? "bg-[#B8561B]"
         : tone === "destructive"
           ? "bg-[#9B3227]"
-          : "bg-[#D95A00]";
+          : "bg-[#E05600]";
   return (
-    <div className="h-1.5 w-full overflow-hidden rounded bg-[#C8D0DC]">
+    <div className="h-1.5 w-full overflow-hidden rounded bg-[#E2E8F0]">
       <div
         className={cn("h-full rounded transition-all duration-300", bar)}
         style={{ width: `${Math.min(100, value)}%` }}
@@ -175,7 +175,7 @@ export function Meter({ value, tone = "primary" }: { value: number; tone?: Tone 
 
 export function EmptyHint({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-lg border border-dashed border-[#A6ACB6] p-5 text-center text-xs text-[#4A5059]">
+    <div className="rounded-lg border border-dashed border-[#E2E8F0] p-5 text-center text-xs text-[#475569]">
       {children}
     </div>
   );

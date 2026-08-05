@@ -53,34 +53,34 @@ function Page() {
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {connectors.map((c) => (
-          <div key={c.name} className="flex flex-col justify-between rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] p-4 transition-colors hover:border-[#7A808A]">
+          <div key={c.name} className="flex flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 transition-colors hover:border-[#CBD5E1]">
             <div>
-              <div className="flex items-center justify-between border-b border-[#A6ACB6] pb-2.5">
+              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
                 <div className="flex items-center gap-2">
-                  <div className="grid size-7 place-items-center rounded bg-[#D95A00] text-white">
+                  <div className="grid size-7 place-items-center rounded bg-[#E05600] text-white">
                     <Plug className="size-3.5" />
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold text-[#1A1D20]">{c.name}</h3>
-                    <p className="text-[10px] text-[#4A5059]">{c.type}</p>
+                    <h3 className="text-xs font-bold text-[#0F172A]">{c.name}</h3>
+                    <p className="text-[10px] text-[#475569]">{c.type}</p>
                   </div>
                 </div>
                 <Pill tone="success">{c.status}</Pill>
               </div>
 
-              <div className="my-3 grid grid-cols-2 gap-2 rounded-lg bg-[#C8D0DC] p-2 text-center border border-[#A6ACB6]">
+              <div className="my-3 grid grid-cols-2 gap-2 rounded-lg bg-[#F1F5F9] p-2 text-center border border-[#E2E8F0]">
                 <div>
-                  <p className="text-[10px] text-[#4A5059]">Sync Rate</p>
-                  <p className="text-xs font-bold text-[#1A1D20]">{c.syncRate}</p>
+                  <p className="text-[10px] font-semibold text-[#475569]">Sync Rate</p>
+                  <p className="text-xs font-bold text-[#0F172A]">{c.syncRate}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-[#4A5059]">Latency</p>
-                  <p className="text-xs font-bold text-[#D95A00]">{c.latency}</p>
+                  <p className="text-[10px] font-semibold text-[#475569]">Latency</p>
+                  <p className="text-xs font-bold text-[#E05600]">{c.latency}</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-1 text-[10px] text-[#4A5059]">
+            <div className="flex items-center justify-between pt-1 text-[10px] font-medium text-[#475569]">
               <span>Daily: {c.dailyCalls}</span>
               <span>Sync: {c.lastSync}</span>
             </div>

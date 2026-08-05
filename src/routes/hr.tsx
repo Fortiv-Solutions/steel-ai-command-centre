@@ -4,9 +4,10 @@ import {
   CheckCircle2,
   Clock,
   UserCheck,
+  UserCog,
   Users,
 } from "lucide-react";
-import { PageHeader, Panel, Pill, StatCard } from "@/components/ui-kit";
+import { Meter, PageHeader, Panel, Pill, StatCard } from "@/components/ui-kit";
 import {
   Table,
   TableBody,
@@ -19,18 +20,17 @@ import {
 export const Route = createFileRoute("/hr")({
   head: () => ({
     meta: [
-      { title: "HR & Workforce OS · Steel AI Command Center" },
-      { name: "description", content: "Shift manning, operator certifications, safety training, and attendance." },
+      { title: "HR & Workforce Operating System · Steel AI Command Center" },
+      { name: "description", content: "Plant shift rostering, safety training compliance, overtime tracking, and headcount analytics." },
     ],
   }),
   component: Page,
 });
 
-const shiftRoster = [
-  { shift: "Shift A (06:00 - 14:00)", plantArea: "EAF Melt Shop 1", operators: 42, reqManning: 42, certRate: "100%", status: "Fully Manned" },
-  { shift: "Shift A (06:00 - 14:00)", plantArea: "Bar & TMT Mill 2", operators: 58, reqManning: 60, certRate: "98.2%", status: "Optimal" },
-  { shift: "Shift B (14:00 - 22:00)", plantArea: "Continuous Caster 2", operators: 36, reqManning: 36, certRate: "100%", status: "Fully Manned" },
-  { shift: "Shift B (14:00 - 22:00)", plantArea: "Stockyard & Dispatch", operators: 28, reqManning: 30, certRate: "96.5%", status: "Optimal" },
+const shiftData = [
+  { shift: "Shift A (06:00 - 14:00)", plant: "Melt Shop Unit 1", headcount: 142, attendance: "98.5%", safetyPass: "100%", overtimeHours: "12 hrs", status: "Active" },
+  { shift: "Shift B (14:00 - 22:00)", plant: "Rolling Bar Mill 2", headcount: 185, attendance: "97.2%", safetyPass: "99.2%", overtimeHours: "18 hrs", status: "Active" },
+  { shift: "Shift C (22:00 - 06:00)", plant: "Refractory & Maintenance", headcount: 96, attendance: "96.8%", safetyPass: "100%", overtimeHours: "24 hrs", status: "Active" },
 ];
 
 function Page() {
@@ -39,37 +39,37 @@ function Page() {
       <PageHeader
         eyebrow="Business"
         title="HR & Workforce Operating System"
-        description="Shift manning levels, crane & EAF operator certifications, contract labor compliance, and safety training logs."
+        description="Plant shift rosters, safety certification compliance, contractor workforce tracking, and headcount productivity."
       />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Active Workforce" value="3,842 Staff" hint="permanent & contract" icon={Users} />
-        <StatCard label="Shift Manning Rate" value="98.6%" delta={1.2} hint="optimal shift allocation" icon={UserCheck} />
-        <StatCard label="Operator Certifications" value="98.2%" hint="crane & ladle qualified" icon={Award} />
-        <StatCard label="Safety Training Log" value="100%" hint="toolbox talks completed" icon={CheckCircle2} />
+        <StatCard label="Plant Headcount" value="4,250 FTE" hint="3 shifts operating" icon={Users} />
+        <StatCard label="Shift Attendance" value="98.2%" delta={1.1} hint="zero unexcused absence" icon={UserCheck} />
+        <StatCard label="Safety Training %" value="99.4%" hint="100% mandatory compliance" icon={Award} />
+        <StatCard label="Overtime Hours" value="1,240 hrs/mo" delta={-14.2} hint="optimized shift balance" icon={Clock} />
       </div>
 
-      <Panel title="Live Shift Manning Level & Plant Area Allocation" bare>
+      <Panel title="Live Plant Shift Rostering & Safety Compliance" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Shift Schedule</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Plant Facility / Mill</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Active Operators</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Required Manning</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Certified Operator %</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Manning Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Shift Schedule</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Plant Facility / Mill</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Headcount On-Duty</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Attendance Rate</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Safety Pass %</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Shift Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {shiftRoster.map((s, idx) => (
-              <TableRow key={idx} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-bold text-xs text-[#D95A00]">{s.shift}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{s.plantArea}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#1A1D20]">{s.operators}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#4A5059]">{s.reqManning}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#B87514]">{s.certRate}</TableCell>
-                <TableCell><Pill tone="success">{s.status}</Pill></TableCell>
+            {shiftData.map((s) => (
+              <TableRow key={s.shift} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-bold text-xs text-[#0F172A]">{s.shift}</TableCell>
+                <TableCell className="text-xs font-bold text-[#E05600]">{s.plant}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{s.headcount}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{s.attendance}</TableCell>
+                <TableCell><Pill tone="success">{s.safetyPass}</Pill></TableCell>
+                <TableCell><Pill tone="info">{s.status}</Pill></TableCell>
               </TableRow>
             ))}
           </TableBody>

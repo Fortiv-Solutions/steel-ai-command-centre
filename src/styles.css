@@ -5,9 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * AI Command Center — Light Enterprise Steel OS
- * Raw steel, brushed metal & graphite surfaces with molten orange & copper accents.
- * Strict zero-white (#FFFFFF), zero-blue, zero-green color palette.
+ * Steel AI OS — White Enterprise Executive Theme
+ * Primary White (#FFFFFF) background with crisp slate surfaces & refined executive terracotta orange (#E05600) accent.
  */
 
 @theme inline {
@@ -52,9 +51,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-hover: var(--hover);
-  --color-[#D95A00]: #D95A00;
+  --color-orange: #E05600;
   --color-copper: #9E521D;
-  --color-silver: #7A808A;
+  --color-silver: #64748B;
 
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
@@ -74,61 +73,61 @@
 :root {
   --radius: 12px;
 
-  /* Industrial Raw Steel Background (Strictly No Pure White) */
-  --background: #D5DCE4;
-  --foreground: #1A1D20;
+  /* Executive Primary White Background */
+  --background: #FFFFFF;
+  --foreground: #0F172A;
 
-  /* Industrial Light Steel Surfaces */
-  --surface: #E4E8EE;
-  --surface-foreground: #1A1D20;
-  --elevated: #C8D0DC;
-  --card: #E4E8EE;
-  --card-foreground: #1A1D20;
-  --popover: #E4E8EE;
-  --popover-foreground: #1A1D20;
+  /* Executive Slate Surfaces */
+  --surface: #F8FAFC;
+  --surface-foreground: #0F172A;
+  --elevated: #F1F5F9;
+  --card: #F8FAFC;
+  --card-foreground: #0F172A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
 
-  /* Primary Accents */
-  --primary: #D95A00; /* Molten Orange */
-  --primary-foreground: #1A1D20;
-  --secondary: #B6BDC8; /* Steel Slate */
-  --secondary-foreground: #1A1D20;
-  --muted: #C8D0DC;
-  --muted-foreground: #4A5059; /* Text Secondary */
+  /* Primary Accents — Refined Executive Orange */
+  --primary: #E05600; /* Refined Terracotta Orange */
+  --primary-foreground: #FFFFFF;
+  --secondary: #F1F5F9; /* Slate Plate */
+  --secondary-foreground: #0F172A;
+  --muted: #F1F5F9;
+  --muted-foreground: #475569; /* Graphite Secondary */
   --accent: #9E521D; /* Industrial Copper */
-  --accent-foreground: #1A1D20;
+  --accent-foreground: #FFFFFF;
 
-  /* Status Colors - Strictly No Green or Blue */
+  /* Status Colors — Strictly No Green or Blue */
   --destructive: #9B3227; /* Brick Red */
-  --destructive-foreground: #1A1D20;
+  --destructive-foreground: #FFFFFF;
   --success: #B87514; /* Warm Gold / Amber */
-  --success-foreground: #1A1D20;
+  --success-foreground: #FFFFFF;
   --warning: #B8561B; /* Burnt Orange */
-  --warning-foreground: #1A1D20;
-  --info: #7A808A; /* Steel Silver */
-  --info-foreground: #1A1D20;
+  --warning-foreground: #FFFFFF;
+  --info: #64748B; /* Steel Slate */
+  --info-foreground: #FFFFFF;
 
-  /* Metallic Borders & Inputs */
-  --border: #A6ACB6;
-  --input: #A6ACB6;
-  --ring: #D95A00;
-  --hover: #C6CBD4;
+  /* Crisp Metallic Borders & Inputs */
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #E05600;
+  --hover: #F1F5F9;
 
-  /* Industrial Light Charts */
-  --chart-1: #D95A00; /* Molten Orange */
+  /* Charts */
+  --chart-1: #E05600; /* Refined Terracotta Orange */
   --chart-2: #9E521D; /* Copper */
-  --chart-3: #7A808A; /* Steel Silver */
+  --chart-3: #64748B; /* Steel Slate */
   --chart-4: #B87514; /* Amber */
   --chart-5: #B8561B; /* Burnt Orange */
 
   /* Sidebar */
-  --sidebar: #C8CDD5;
-  --sidebar-foreground: #1A1D20;
-  --sidebar-primary: #D95A00;
-  --sidebar-primary-foreground: #1A1D20;
-  --sidebar-accent: #B8BEC8;
-  --sidebar-accent-foreground: #1A1D20;
-  --sidebar-border: #A6ACB6;
-  --sidebar-ring: #D95A00;
+  --sidebar: #F8FAFC;
+  --sidebar-foreground: #0F172A;
+  --sidebar-primary: #E05600;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F1F5F9;
+  --sidebar-accent-foreground: #0F172A;
+  --sidebar-border: #E2E8F0;
+  --sidebar-ring: #E05600;
 }
 
 @layer base {
@@ -138,7 +137,7 @@
 
   html {
     color-scheme: light;
-    scrollbar-color: var(--color-border) #D5DCE4;
+    scrollbar-color: #CBD5E1 #FFFFFF;
   }
 
   body {
@@ -161,35 +160,35 @@
     height: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #A6ACB6;
+    background: #CBD5E1;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: #D5DCE4;
+    background: #FFFFFF;
   }
 }
 
-/* Flat Industrial Light Steel Plate panels - No white, no glassmorphism */
+/* White Theme Cards & Panels */
 @utility industrial-card {
-  background-color: #E4E8EE;
-  border: 1px solid #A6ACB6;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
   border-radius: 12px;
 }
 
 @utility glass-panel {
-  background-color: #E4E8EE;
-  border: 1px solid #A6ACB6;
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
   border-radius: 12px;
 }
 
 @utility molten-text {
-  color: #D95A00;
+  color: #E05600;
 }
 
 @utility molten-bg {
-  background-color: #D95A00;
+  background-color: #E05600;
 }
 
 @utility focus-glow {
-  box-shadow: 0 0 0 1px #D95A00;
+  box-shadow: 0 0 0 1px #E05600;
 }

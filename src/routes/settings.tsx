@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Bell,
-  Building,
-  Database,
+  CheckCircle2,
   Globe,
   Lock,
   Save,
+  Settings2,
   Sliders,
 } from "lucide-react";
-import { PageHeader, Panel, StatCard } from "@/components/ui-kit";
+import { PageHeader, Panel } from "@/components/ui-kit";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -17,76 +17,64 @@ export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
       { title: "Platform Settings · Steel AI Command Center" },
-      { name: "description", content: "Tenancy, plant scope, system limits, and global configuration." },
+      { name: "description", content: "Platform preferences, default plant scope, notification rules, and API configurations." },
     ],
   }),
   component: Page,
 });
 
 function Page() {
-  const [plantScope, setPlantScope] = useState("Integrated Plant 1 (Jamshedpur)");
-  const [retentionDays, setRetentionDays] = useState("365");
-  const [autoSignMtc, setAutoSignMtc] = useState(true);
+  const [saved, setSaved] = useState(false);
+
+  const handleSave = () => {
+    setSaved(true);
+    setTimeout(() => setSaved(false), 3000);
+  };
 
   return (
     <div className="space-y-5">
       <PageHeader
         eyebrow="Platform"
-        title="Platform & Multi-Plant Settings"
-        description="System configuration, tenancy, data retention, and automated approval rules."
+        title="Platform & Operating System Settings"
+        description="Configure default steel plant facility scope, AI notification threshold rules, system themes, and API credentials."
         actions={
-          <Button size="sm">
+          <Button size="sm" onClick={handleSave}>
             <Save className="size-3.5" /> Save Changes
           </Button>
         }
       />
 
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Active Plant Scope" value="5 Plants" hint="multi-tenancy" icon={Building} />
-        <StatCard label="Data Retention" value="365 Days" hint="compliance audit" icon={Database} />
-        <StatCard label="API Gateway" value="v2.4 Active" hint="100% uptime" icon={Globe} />
-        <StatCard label="Security Protocol" value="TLS 1.3" hint="zero hardware" icon={Lock} />
-      </div>
+      {saved && (
+        <div className="flex items-center gap-2 rounded-lg border border-[#FDBA74] bg-[#FFF7ED] p-3 text-xs font-bold text-[#E05600]">
+          <CheckCircle2 className="size-4" /> Platform settings updated successfully!
+        </div>
+      )}
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Panel title="Multi-Plant Tenancy & Scope">
+      <div className="grid gap-5 lg:grid-cols-2">
+        <Panel title="Plant Scope & Regional Preferences">
           <div className="space-y-4">
             <div>
-              <label className="mb-1 block text-xs font-bold text-[#1A1D20]">Default Plant Facility Scope</label>
-              <Input
-                value={plantScope}
-                onChange={(e) => setPlantScope(e.target.value)}
-                className="border-[#A6ACB6] bg-[#DCE0E6] text-xs font-bold text-[#1A1D20]"
-              />
+              <label className="mb-1 block text-xs font-bold text-[#0F172A]">Default Plant Facility Scope</label>
+              <Input defaultValue="Integrated Plant · Angul" className="h-9 border-[#E2E8F0] bg-[#FFFFFF] text-xs text-[#0F172A]" />
             </div>
+
             <div>
-              <label className="mb-1 block text-xs font-bold text-[#1A1D20]">Data Retention (Days)</label>
-              <Input
-                value={retentionDays}
-                onChange={(e) => setRetentionDays(e.target.value)}
-                className="border-[#A6ACB6] bg-[#DCE0E6] text-xs font-bold text-[#1A1D20]"
-              />
+              <label className="mb-1 block text-xs font-bold text-[#0F172A]">Currency & Unit System</label>
+              <Input defaultValue="INR (₹) · Metric Tonnes (MT) · Celsius (°C)" className="h-9 border-[#E2E8F0] bg-[#FFFFFF] text-xs text-[#0F172A]" />
             </div>
           </div>
         </Panel>
 
-        <Panel title="Automated Approval Rules">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between rounded-lg border border-[#A6ACB6] bg-[#C8D0DC] p-3">
-              <div>
-                <p className="text-xs font-bold text-[#1A1D20]">Auto-Sign Mill Test Certificates</p>
-                <p className="text-[10px] text-[#4A5059]">When chemical & mechanical properties match PO specs 100%</p>
-              </div>
-              <Button size="sm" variant={autoSignMtc ? "default" : "secondary"} onClick={() => setAutoSignMtc(!autoSignMtc)}>
-                {autoSignMtc ? "Enabled" : "Disabled"}
-              </Button>
+        <Panel title="AI Copilot & Approval Thresholds">
+          <div className="space-y-4">
+            <div>
+              <label className="mb-1 block text-xs font-bold text-[#0F172A]">Human Signoff Approval Threshold</label>
+              <Input defaultValue="₹1,00,00,000 (₹1.0 Crore)" className="h-9 border-[#E2E8F0] bg-[#FFFFFF] text-xs text-[#0F172A]" />
             </div>
-            <div className="flex items-center justify-between rounded-lg border border-[#A6ACB6] bg-[#C8D0DC] p-3">
-              <div>
-                <p className="text-xs font-bold text-[#1A1D20]">High Value Approval Threshold</p>
-                <p className="text-[10px] text-[#4A5059]">Require Vice President approval for POs exceeding ₹1.0 Cr</p>
-              </div>
-              <span className="text-xs font-bold text-[#D95A00]">₹1.0 Cr</span>
+
+            <div>
+              <label className="mb-1 block text-xs font-bold text-[#0F172A]">AI RAG Minimum Confidence Threshold</label>
+              <Input defaultValue="90% Confidence Score" className="h-9 border-[#E2E8F0] bg-[#FFFFFF] text-xs text-[#0F172A]" />
             </div>
           </div>
         </Panel>

@@ -21,9 +21,11 @@ import {
   Sparkles,
   TrendingUp,
   Truck,
+  UserCog,
   Users,
   Wallet,
   Warehouse,
+  Workflow as WorkflowIcon,
   Zap,
 } from "lucide-react";
 import { PageHeader, Panel, Pill, StatCard, Meter, statusTone } from "@/components/ui-kit";
@@ -63,7 +65,7 @@ export const Route = createFileRoute("/")({
   component: Dashboard,
 });
 
-// Domain cards configuration mapping the 6 enterprise domains
+// Domain cards configuration mapping the 6 main enterprise modules to their submodules
 const domainCards = [
   {
     title: "Manufacturing",
@@ -74,12 +76,12 @@ const domainCards = [
     completion: 88,
     primaryRoute: "/heat-intelligence",
     modules: [
-      { label: "Heat Intelligence", to: "/heat-intelligence", icon: Flame },
+      { label: "Heat & Batch Intelligence", to: "/heat-intelligence", icon: Flame },
       { label: "Mill Test Certificates", to: "/mtc", icon: ScrollText },
       { label: "Materials & Grades", to: "/materials", icon: Factory },
       { label: "Production Documents", to: "/production", icon: Factory },
-      { label: "Inventory", to: "/inventory", icon: Warehouse },
-      { label: "Logistics", to: "/logistics", icon: Truck },
+      { label: "Inventory & Stockyard", to: "/inventory", icon: Warehouse },
+      { label: "Logistics & Dispatch", to: "/logistics", icon: Truck },
     ],
   },
   {
@@ -95,8 +97,8 @@ const domainCards = [
       { label: "Projects", to: "/projects", icon: FolderKanban },
       { label: "Tasks", to: "/tasks", icon: CheckCircle2 },
       { label: "Approvals", to: "/approvals", icon: CheckCircle2 },
-      { label: "Risk", to: "/risk", icon: ShieldAlert },
-      { label: "Quality", to: "/quality", icon: BadgeCheck },
+      { label: "Risk Center", to: "/risk", icon: ShieldAlert },
+      { label: "Quality Control", to: "/quality", icon: BadgeCheck },
     ],
   },
   {
@@ -109,24 +111,25 @@ const domainCards = [
     primaryRoute: "/finance",
     modules: [
       { label: "Customers", to: "/customers", icon: Users },
-      { label: "Vendors", to: "/vendors", icon: Users },
-      { label: "Finance", to: "/finance", icon: Wallet },
-      { label: "HR", to: "/hr", icon: Users },
-      { label: "Compliance", to: "/compliance", icon: Scale },
+      { label: "Vendors & Procurement", to: "/vendors", icon: Users },
+      { label: "Finance & Commercial", to: "/finance", icon: Wallet },
+      { label: "HR & Workforce", to: "/hr", icon: UserCog },
+      { label: "Regulatory Compliance", to: "/compliance", icon: Scale },
     ],
   },
   {
     title: "Knowledge",
     icon: Brain,
-    modulesCount: 3,
-    automationsCount: 28,
+    modulesCount: 4,
+    automationsCount: 31,
     agentsCount: 8,
-    completion: 91,
+    completion: 94,
     primaryRoute: "/company-brain",
     modules: [
       { label: "Company Brain", to: "/company-brain", icon: Brain },
       { label: "Document Intelligence", to: "/documents", icon: FileSearch },
       { label: "Knowledge Center", to: "/knowledge", icon: Brain },
+      { label: "Reports", to: "/reports", icon: ScrollText },
     ],
   },
   {
@@ -139,9 +142,9 @@ const domainCards = [
     primaryRoute: "/agents",
     modules: [
       { label: "AI Agents", to: "/agents", icon: Bot },
-      { label: "AI Copilots", to: "/copilots", icon: Sparkles },
+      { label: "AI Copilot", to: "/copilots", icon: Sparkles },
       { label: "Automation Center", to: "/automation", icon: Zap },
-      { label: "Workflow Studio", to: "/workflow-studio", icon: LayoutDashboard },
+      { label: "Workflow Studio", to: "/workflow-studio", icon: WorkflowIcon },
     ],
   },
   {
@@ -153,9 +156,9 @@ const domainCards = [
     completion: 98,
     primaryRoute: "/administration",
     modules: [
-      { label: "Integrations", to: "/integrations", icon: Plug },
-      { label: "Security", to: "/security", icon: ShieldAlert },
-      { label: "Governance", to: "/governance", icon: Settings2 },
+      { label: "Integrations & Connectors", to: "/integrations", icon: Plug },
+      { label: "Security & Audit", to: "/security", icon: ShieldAlert },
+      { label: "AI Governance", to: "/governance", icon: Settings2 },
       { label: "Administration", to: "/administration", icon: Crown },
       { label: "Settings", to: "/settings", icon: Settings2 },
     ],
@@ -178,28 +181,28 @@ function Dashboard() {
   return (
     <div className="space-y-5">
       {/* 1. Light Industrial Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] px-4 py-3">
         <div className="flex items-center gap-3">
-          <div className="grid size-8 place-items-center rounded bg-[#D95A00] text-white">
+          <div className="grid size-8 place-items-center rounded bg-[#E05600] text-white">
             <Flame className="size-4" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold uppercase tracking-wider text-[#1A1D20]">
+              <h1 className="text-sm font-bold uppercase tracking-wider text-[#0F172A]">
                 AI Command Center
               </h1>
-              <span className="rounded bg-[#C8D0DC] px-2 py-0.5 text-[10px] font-bold text-[#B87514] border border-[#A6ACB6]">
+              <span className="rounded bg-[#F1F5F9] px-2 py-0.5 text-[10px] font-bold text-[#B87514] border border-[#E2E8F0]">
                 Integrated Plant Scope
               </span>
             </div>
-            <p className="text-[11px] font-medium text-[#4A5059]">
+            <p className="text-[11px] font-medium text-[#475569]">
               Software-only enterprise platform · 43 business functions · 231 automations
             </p>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-[11px] text-[#4A5059]">Last updated: <strong className="text-[#1A1D20]">Just now</strong></span>
+          <span className="text-[11px] text-[#475569]">Last updated: <strong className="text-[#0F172A]">Just now</strong></span>
           <Button asChild size="sm" variant="secondary">
             <Link to="/cockpit">
               <Crown className="size-3.5" /> Executive Cockpit
@@ -216,10 +219,10 @@ function Dashboard() {
       {/* 2. Executive KPI Strip (Single Horizontal Row) */}
       <div>
         <div className="mb-2 flex items-center justify-between">
-          <h2 className="text-[11px] font-bold uppercase tracking-widest text-[#D95A00]">
+          <h2 className="text-[11px] font-bold uppercase tracking-widest text-[#E05600]">
             Executive KPI Strip
           </h2>
-          <span className="text-[11px] font-semibold text-[#4A5059]">Consolidated Plant Metrics</span>
+          <span className="text-[11px] font-semibold text-[#475569]">Consolidated Plant Metrics</span>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {kpiStripData.map((k) => (
@@ -228,13 +231,13 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* 3. Business Function Overview (6 Large Enterprise Domain Cards) */}
+      {/* 3. Main Enterprise Modules & Sub-modules Overview */}
       <div>
         <div className="mb-2 flex items-center justify-between">
-          <h2 className="text-[11px] font-bold uppercase tracking-widest text-[#D95A00]">
-            Business Function Overview
+          <h2 className="text-[11px] font-bold uppercase tracking-widest text-[#E05600]">
+            Main Enterprise Modules & Sub-modules Overview
           </h2>
-          <span className="text-[11px] font-semibold text-[#4A5059]">Replaces deep navigation hierarchy</span>
+          <span className="text-[11px] font-semibold text-[#475569]">6 Core Modules with Submodules</span>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -243,45 +246,45 @@ function Dashboard() {
             return (
               <div
                 key={domain.title}
-                className="flex flex-col justify-between rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] p-4 transition-colors hover:border-[#7A808A]"
+                className="flex flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 transition-colors hover:border-[#CBD5E1]"
               >
                 <div>
                   {/* Domain Header */}
-                  <div className="flex items-center justify-between border-b border-[#A6ACB6] pb-3">
+                  <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="grid size-8 place-items-center rounded bg-[#C8D0DC] text-[#D95A00] border border-[#A6ACB6]">
+                      <div className="grid size-8 place-items-center rounded bg-[#F1F5F9] text-[#E05600] border border-[#E2E8F0]">
                         <DomainIcon className="size-4" />
                       </div>
                       <div>
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A1D20]">
-                          {domain.title}
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+                          {domain.title} Module
                         </h3>
-                        <p className="text-[10px] font-medium text-[#4A5059]">
-                          {domain.modulesCount} Modules · {domain.automationsCount} Automations
+                        <p className="text-[10px] font-medium text-[#475569]">
+                          {domain.modulesCount} Submodules · {domain.automationsCount} Automations
                         </p>
                       </div>
                     </div>
                     <Link
                       to={domain.primaryRoute}
-                      className="text-[#4A5059] hover:text-[#D95A00]"
-                      title="Open domain"
+                      className="text-[#475569] hover:text-[#E05600]"
+                      title="Open main module"
                     >
                       <ChevronRight className="size-4" />
                     </Link>
                   </div>
 
                   {/* Domain Metrics */}
-                  <div className="my-3 grid grid-cols-3 gap-2 rounded-lg bg-[#C8D0DC] p-2.5 text-center border border-[#A6ACB6]">
+                  <div className="my-3 grid grid-cols-3 gap-2 rounded-lg bg-[#F1F5F9] p-2.5 text-center border border-[#E2E8F0]">
                     <div>
-                      <p className="text-[10px] font-semibold text-[#4A5059]">Modules</p>
-                      <p className="text-sm font-bold text-[#1A1D20]">{domain.modulesCount}</p>
+                      <p className="text-[10px] font-semibold text-[#475569]">Submodules</p>
+                      <p className="text-sm font-bold text-[#0F172A]">{domain.modulesCount}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-semibold text-[#4A5059]">AI Agents</p>
-                      <p className="text-sm font-bold text-[#D95A00]">{domain.agentsCount}</p>
+                      <p className="text-[10px] font-semibold text-[#475569]">AI Agents</p>
+                      <p className="text-sm font-bold text-[#E05600]">{domain.agentsCount}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] font-semibold text-[#4A5059]">Adoption</p>
+                      <p className="text-[10px] font-semibold text-[#475569]">Adoption</p>
                       <p className="text-sm font-bold text-[#B87514]">{domain.completion}%</p>
                     </div>
                   </div>
@@ -289,27 +292,32 @@ function Dashboard() {
                   {/* Meter */}
                   <div className="mb-3">
                     <div className="mb-1 flex justify-between text-[10px]">
-                      <span className="font-semibold text-[#4A5059]">Automation Maturity</span>
-                      <span className="font-bold text-[#1A1D20]">{domain.completion}%</span>
+                      <span className="font-semibold text-[#475569]">Automation Maturity</span>
+                      <span className="font-bold text-[#0F172A]">{domain.completion}%</span>
                     </div>
                     <Meter value={domain.completion} tone="success" />
                   </div>
 
-                  {/* Module List Links */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {domain.modules.map((m) => {
-                      const MIcon = m.icon;
-                      return (
-                        <Link
-                          key={m.to}
-                          to={m.to}
-                          className="flex items-center gap-1.5 rounded border border-[#A6ACB6] bg-[#DCE0E6] px-2 py-1 text-[11px] font-bold text-[#1A1D20] hover:border-[#7A808A] hover:bg-[#C8D0DC]"
-                        >
-                          <MIcon className="size-3 text-[#4A5059]" />
-                          <span>{m.label}</span>
-                        </Link>
-                      );
-                    })}
+                  {/* Submodule List Links */}
+                  <div>
+                    <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wider text-[#64748B]">
+                      Submodules:
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {domain.modules.map((m) => {
+                        const MIcon = m.icon;
+                        return (
+                          <Link
+                            key={m.to}
+                            to={m.to}
+                            className="flex items-center gap-1.5 rounded border border-[#E2E8F0] bg-[#FFFFFF] px-2 py-1 text-[11px] font-bold text-[#0F172A] hover:border-[#E05600] hover:bg-[#FFF7ED] hover:text-[#E05600] transition-colors"
+                          >
+                            <MIcon className="size-3 text-[#475569]" />
+                            <span>{m.label}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -321,10 +329,10 @@ function Dashboard() {
       {/* 4. Operational Intelligence (Two-Column Layout) */}
       <div className="pt-2">
         <div className="mb-2 flex items-center justify-between">
-          <h2 className="text-[11px] font-bold uppercase tracking-widest text-[#D95A00]">
+          <h2 className="text-[11px] font-bold uppercase tracking-widest text-[#E05600]">
             Operational Intelligence
           </h2>
-          <span className="text-[11px] font-semibold text-[#4A5059]">Live Activity & Plant Status</span>
+          <span className="text-[11px] font-semibold text-[#475569]">Live Activity & Plant Status</span>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-2">
@@ -341,13 +349,13 @@ function Dashboard() {
               }
               bare
             >
-              <div className="divide-y divide-[#A6ACB6]">
+              <div className="divide-y divide-[#E2E8F0]">
                 {insights.map((i) => (
                   <div key={i.title} className="flex gap-3 p-3.5">
-                    <TrendingUp className="mt-0.5 size-4 shrink-0 text-[#D95A00]" />
+                    <TrendingUp className="mt-0.5 size-4 shrink-0 text-[#E05600]" />
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-bold text-[#1A1D20]">{i.title}</p>
-                      <p className="mt-1 text-[11px] leading-relaxed text-[#4A5059]">{i.body}</p>
+                      <p className="text-xs font-bold text-[#0F172A]">{i.title}</p>
+                      <p className="mt-1 text-[11px] leading-relaxed text-[#475569]">{i.body}</p>
                     </div>
                     <Pill tone={i.tone}>{i.impact}</Pill>
                   </div>
@@ -366,12 +374,12 @@ function Dashboard() {
               }
               bare
             >
-              <div className="divide-y divide-[#A6ACB6]">
+              <div className="divide-y divide-[#E2E8F0]">
                 {approvals.slice(0, 5).map((a) => (
                   <div key={a.id} className="flex items-center gap-3 px-4 py-3">
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-xs font-bold text-[#1A1D20]">{a.title}</p>
-                      <p className="text-[10px] text-[#4A5059]">
+                      <p className="truncate text-xs font-bold text-[#0F172A]">{a.title}</p>
+                      <p className="text-[10px] text-[#475569]">
                         {a.department} · {a.age} ago
                       </p>
                     </div>
@@ -397,7 +405,7 @@ function Dashboard() {
               }
               bare
             >
-              <div className="divide-y divide-[#A6ACB6]">
+              <div className="divide-y divide-[#E2E8F0]">
                 {[...departments]
                   .sort((a, b) => b.annualSavings - a.annualSavings)
                   .slice(0, 5)
@@ -406,16 +414,16 @@ function Dashboard() {
                       key={d.slug}
                       to="/departments/$slug"
                       params={{ slug: d.slug }}
-                      className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-[#C8D0DC]"
+                      className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-[#F1F5F9]"
                     >
                       <Bot className="size-3.5 text-[#9E521D]" />
-                      <span className="min-w-0 flex-1 truncate text-xs font-bold text-[#1A1D20]">
+                      <span className="min-w-0 flex-1 truncate text-xs font-bold text-[#0F172A]">
                         {d.name}
                       </span>
                       <span className="w-24">
                         <Meter value={d.adoption} />
                       </span>
-                      <span className="w-20 text-right text-[11px] tabular-nums font-bold text-[#4A5059]">
+                      <span className="w-20 text-right text-[11px] tabular-nums font-bold text-[#475569]">
                         {inr(d.annualSavings)}
                       </span>
                     </Link>
@@ -438,8 +446,8 @@ function Dashboard() {
                 {roadmap.map((p) => (
                   <div key={p.phase}>
                     <div className="mb-1 flex items-center justify-between text-[10px]">
-                      <span className="font-bold text-[#1A1D20]">{p.phase}</span>
-                      <span className="text-[#4A5059]">{p.window}</span>
+                      <span className="font-bold text-[#0F172A]">{p.phase}</span>
+                      <span className="text-[#475569]">{p.window}</span>
                     </div>
                     <Meter value={p.progress} tone={p.progress === 100 ? "success" : "primary"} />
                   </div>
@@ -483,7 +491,7 @@ function Dashboard() {
         {activeTab === "sales" && (
           <div className="grid gap-4 md:grid-cols-3">
             <div className="md:col-span-2">
-              <p className="mb-2 text-[11px] font-bold text-[#4A5059]">
+              <p className="mb-2 text-[11px] font-bold text-[#475569]">
                 Domestic vs Export Dispatches (₹ Cr)
               </p>
               <AreaTrend
@@ -498,7 +506,7 @@ function Dashboard() {
               />
             </div>
             <div>
-              <p className="mb-2 text-[11px] font-bold text-[#4A5059]">
+              <p className="mb-2 text-[11px] font-bold text-[#475569]">
                 Steel Grade Production Share
               </p>
               <DonutChart data={gradeMix} height={220} />
@@ -509,7 +517,7 @@ function Dashboard() {
         {activeTab === "procurement" && (
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <p className="mb-2 text-[11px] font-bold text-[#4A5059]">
+              <p className="mb-2 text-[11px] font-bold text-[#475569]">
                 Procurement Spend (₹ Cr)
               </p>
               <BarSeries
@@ -526,7 +534,7 @@ function Dashboard() {
               />
             </div>
             <div>
-              <p className="mb-2 text-[11px] font-bold text-[#4A5059]">
+              <p className="mb-2 text-[11px] font-bold text-[#475569]">
                 Mill Test Certificate Status
               </p>
               <DonutChart data={mtcStatus} inner={50} height={220} />
@@ -536,7 +544,7 @@ function Dashboard() {
 
         {activeTab === "working" && (
           <div>
-            <p className="mb-2 text-[11px] font-bold text-[#4A5059]">
+            <p className="mb-2 text-[11px] font-bold text-[#475569]">
               Working Capital Cycle (DSO / DPO / DIO Days)
             </p>
             <LineSeries

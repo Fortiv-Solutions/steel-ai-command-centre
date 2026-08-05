@@ -21,7 +21,7 @@ import {
 } from "recharts";
 
 const axis = {
-  stroke: "#4A5059",
+  stroke: "#475569",
   fontSize: 10,
   tickLine: false,
   axisLine: false,
@@ -29,25 +29,25 @@ const axis = {
 
 const tooltipStyle = {
   contentStyle: {
-    background: "#E4E8EE",
-    border: "1px solid #A6ACB6",
+    background: "#FFFFFF",
+    border: "1px solid #E2E8F0",
     borderRadius: 8,
     fontSize: 11,
-    color: "#1A1D20",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    color: "#0F172A",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
   },
-  itemStyle: { color: "#1A1D20" },
-  labelStyle: { color: "#4A5059", fontSize: 10, fontWeight: 700 },
+  itemStyle: { color: "#0F172A" },
+  labelStyle: { color: "#475569", fontSize: 10, fontWeight: 700 },
 };
 
-// Light Steel Palette Chart Colors (Strictly No White, No Blue, No Green)
+// Executive White Theme Chart Colors (Molten Orange accent preserved)
 const palette = [
   "#D95A00", // Molten Orange
   "#9E521D", // Copper
-  "#7A808A", // Steel Silver
+  "#64748B", // Steel Slate
   "#B87514", // Amber
   "#B8561B", // Burnt Orange
-  "#5C6370", // Slate Steel
+  "#475569", // Graphite
 ];
 
 export function AreaTrend({
@@ -72,11 +72,11 @@ export function AreaTrend({
             </linearGradient>
           ))}
         </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke="#A6ACB6" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
         <XAxis dataKey={x} {...axis} />
         <YAxis {...axis} />
         <Tooltip {...tooltipStyle} />
-        <Legend wrapperStyle={{ fontSize: 10, color: "#4A5059" }} />
+        <Legend wrapperStyle={{ fontSize: 10, color: "#475569" }} />
         {series.map((s, i) => (
           <Area
             key={s.key}
@@ -109,11 +109,11 @@ export function BarSeries({
   return (
     <ResponsiveContainer width="100%" height={height}>
       <BarChart data={data} margin={{ top: 6, right: 8, left: -18, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#A6ACB6" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
         <XAxis dataKey={x} {...axis} />
         <YAxis {...axis} />
-        <Tooltip {...tooltipStyle} cursor={{ fill: "#C8D0DC", opacity: 0.5 }} />
-        <Legend wrapperStyle={{ fontSize: 10, color: "#4A5059" }} />
+        <Tooltip {...tooltipStyle} cursor={{ fill: "#F1F5F9", opacity: 0.8 }} />
+        <Legend wrapperStyle={{ fontSize: 10, color: "#475569" }} />
         {series.map((s, i) => (
           <Bar
             key={s.key}
@@ -143,11 +143,11 @@ export function LineSeries({
   return (
     <ResponsiveContainer width="100%" height={height}>
       <LineChart data={data} margin={{ top: 6, right: 8, left: -18, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#A6ACB6" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
         <XAxis dataKey={x} {...axis} />
         <YAxis {...axis} />
         <Tooltip {...tooltipStyle} />
-        <Legend wrapperStyle={{ fontSize: 10, color: "#4A5059" }} />
+        <Legend wrapperStyle={{ fontSize: 10, color: "#475569" }} />
         {series.map((s, i) => (
           <Line
             key={s.key}
@@ -183,7 +183,7 @@ export function DonutChart({
           innerRadius={inner}
           outerRadius={inner + 30}
           paddingAngle={2}
-          stroke="#D5DCE4"
+          stroke="#FFFFFF"
           strokeWidth={2}
         >
           {data.map((_, i) => (
@@ -191,7 +191,7 @@ export function DonutChart({
           ))}
         </Pie>
         <Tooltip {...tooltipStyle} />
-        <Legend wrapperStyle={{ fontSize: 10, color: "#4A5059" }} />
+        <Legend wrapperStyle={{ fontSize: 10, color: "#475569" }} />
       </PieChart>
     </ResponsiveContainer>
   );
@@ -207,8 +207,8 @@ export function RadarSpread({
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RadarChart data={data} outerRadius="70%">
-        <PolarGrid stroke="#A6ACB6" />
-        <PolarAngleAxis dataKey="subject" tick={{ fill: "#4A5059", fontSize: 9 }} />
+        <PolarGrid stroke="#E2E8F0" />
+        <PolarAngleAxis dataKey="subject" tick={{ fill: "#475569", fontSize: 9 }} />
         <Radar
           dataKey="value"
           stroke="#D95A00"

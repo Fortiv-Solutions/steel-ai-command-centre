@@ -3,10 +3,10 @@ import {
   AlertTriangle,
   CheckCircle2,
   Flame,
-  Scale,
   ShieldAlert,
+  Thermometer,
 } from "lucide-react";
-import { Meter, PageHeader, Panel, Pill, StatCard } from "@/components/ui-kit";
+import { Meter, PageHeader, Panel, Pill, StatCard, statusTone } from "@/components/ui-kit";
 import {
   Table,
   TableBody,
@@ -19,18 +19,17 @@ import {
 export const Route = createFileRoute("/risk")({
   head: () => ({
     meta: [
-      { title: "Risk Center & Hazard Monitor · Steel AI Command Center" },
-      { name: "description", content: "Plant operational risk, Baghouse SPM emissions, refractory wear, and safety hazard monitoring." },
+      { title: "Risk Center & Plant Safety · Steel AI Command Center" },
+      { name: "description", content: "Ladle lining wear alerts, EAF transformer overload, scrap moisture risks, and safety monitoring." },
     ],
   }),
   component: Page,
 });
 
-const hazardRisks = [
-  { riskId: "RSK-401", area: "EAF Unit 1 Ladle Refractory", hazardType: "Refractory Wear Score", score: 92, limit: "100 Max", status: "Safe (14 Heats left)", action: "Schedule Relining next week" },
-  { riskId: "RSK-402", area: "Melt Shop Baghouse Filter", hazardType: "SPM Emission (Dust)", score: 12, limit: "30 mg/Nm³", status: "Compliant", action: "Normal Operation" },
-  { riskId: "RSK-403", area: "Substation Transformer 3", hazardType: "Thermal Load Temp", score: 68, limit: "90 °C Max", status: "Normal", action: "Cooling Fan Active" },
-  { riskId: "RSK-404", area: "Argon Gas Line Pressure", hazardType: "Gas Pipeline Pressure", score: 85, limit: "100 PSI", status: "Normal", action: "Pressure Regulated" },
+const plantRiskLogs = [
+  { riskId: "RSK-401", area: "EAF Melt Shop 1", hazardType: "Refractory Lining Wear (14 heats left)", limit: "15 Heats Min", score: 85, status: "Medium Risk", corrective: "Schedule Ladle Relining" },
+  { riskId: "RSK-402", area: "Scrap Storage Yard S-2", hazardType: "Scrap Moisture Content High (> 2.5%)", limit: "1.5% Max", score: 92, status: "High Risk", corrective: "Drying Pre-chamber Route" },
+  { riskId: "RSK-403", area: "Bar Mill Transformer", hazardType: "Oil Temperature High (78 °C)", limit: "85 °C Max", score: 60, status: "Low Risk", corrective: "Cooler Fan Assist" },
 ];
 
 function Page() {
@@ -38,43 +37,43 @@ function Page() {
     <div className="space-y-5">
       <PageHeader
         eyebrow="Operations"
-        title="Plant Risk Center & Hazard Monitor"
-        description="Refractory wear monitoring, EAF baghouse SPM emissions, high-voltage transformer loads, and safety hazard warnings."
+        title="Plant Risk Center & Hazard Prevention"
+        description="Predictive risk monitoring for refractory wear, transformer thermal overloads, scrap moisture explosion risks, and safety compliance."
       />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Overall Risk Score" value="Low (12/100)" hint="plant operational" icon={ShieldAlert} />
-        <StatCard label="SPM Stack Emission" value="12 mg/Nm³" hint="limit < 30 mg/Nm³" icon={Scale} />
-        <StatCard label="Refractory Wear" value="92% Health" hint="+14 heats remaining" icon={Flame} />
-        <StatCard label="Safety LTI Record" value="142 Days" hint="zero lost time injuries" icon={CheckCircle2} />
+        <StatCard label="Active Risk Alerts" value="3 Flags" delta={-2} hint="requiring monitoring" icon={ShieldAlert} />
+        <StatCard label="Zero Incident Record" value="482 Days" delta={12} hint="LTI-free operations" icon={CheckCircle2} />
+        <StatCard label="Refractory Health" value="88% Index" hint="ladle & furnace lining" icon={Flame} />
+        <StatCard label="Environmental Safety" value="100% Compliant" hint="CPCB SPM emissions" icon={Thermometer} />
       </div>
 
-      <Panel title="Operational Risk Register & Equipment Wear Monitor" bare>
+      <Panel title="Live Plant Risk Flags & Predictive Hazard Mitigations" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Risk ID</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Plant Facility / Area</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Hazard Parameter</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Current Level vs Limit</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Risk Status</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">AI Corrective Action</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Risk ID</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Plant Facility / Area</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Hazard Parameter</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Current Level vs Limit</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Risk Status</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">AI Corrective Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {hazardRisks.map((r) => (
-              <TableRow key={r.riskId} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{r.riskId}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{r.area}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{r.hazardType}</TableCell>
+            {plantRiskLogs.map((r) => (
+              <TableRow key={r.riskId} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{r.riskId}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{r.area}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{r.hazardType}</TableCell>
                 <TableCell className="w-40">
                   <div className="flex items-center gap-2">
-                    <Meter value={r.score} tone={r.score > 85 ? "warning" : "primary"} />
-                    <span className="text-[10px] font-bold text-[#4A5059]">{r.score}%</span>
+                    <Meter value={r.score} tone={r.score > 80 ? "destructive" : "warning"} />
+                    <span className="text-[10px] font-bold text-[#475569]">{r.score}%</span>
                   </div>
                 </TableCell>
-                <TableCell><Pill tone="success">{r.status}</Pill></TableCell>
-                <TableCell className="text-xs font-bold text-[#B87514]">{r.action}</TableCell>
+                <TableCell><Pill tone={statusTone(r.status)}>{r.status}</Pill></TableCell>
+                <TableCell className="text-xs font-bold text-[#B87514]">{r.corrective}</TableCell>
               </TableRow>
             ))}
           </TableBody>

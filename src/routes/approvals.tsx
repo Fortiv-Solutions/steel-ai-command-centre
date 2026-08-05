@@ -73,8 +73,8 @@ function Page() {
         <StatCard label="AI Alignment Rate" value="93.6%" delta={1.4} hint="human vs AI agreement" icon={CheckCircle2} />
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] p-3">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-[#1A1D20]">Pending Approval Action Queue</h2>
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">Pending Approval Action Queue</h2>
         <div className="flex gap-1.5">
           {["All", "High Risk", "AI Approved"].map((f) => (
             <Button
@@ -92,31 +92,31 @@ function Page() {
       <Panel title="Decision Action Queue" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Approval ID</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Decision Subject</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Department</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Risk Level</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Impact Value</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">AI Rec & Confidence</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Age</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Action</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Approval ID</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Decision Subject</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Department</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Risk Level</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Impact Value</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">AI Rec & Confidence</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Age</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filtered.map((a) => (
-              <TableRow key={a.id} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{a.id}</TableCell>
-                <TableCell className="max-w-md text-xs font-bold text-[#1A1D20]">{a.title}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{a.department}</TableCell>
+              <TableRow key={a.id} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{a.id}</TableCell>
+                <TableCell className="max-w-md text-xs font-bold text-[#0F172A]">{a.title}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{a.department}</TableCell>
                 <TableCell><Pill tone={statusTone(a.risk)}>{a.risk} Risk</Pill></TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#1A1D20]">{a.value}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{a.value}</TableCell>
                 <TableCell>
                   <Pill tone={statusTone(a.aiRecommendation)}>
                     {a.aiRecommendation} · {a.confidence}%
                   </Pill>
                 </TableCell>
-                <TableCell className="text-xs font-bold text-[#4A5059]">{a.age}</TableCell>
+                <TableCell className="text-xs font-bold text-[#475569]">{a.age}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-1.5">
                     <Button size="sm" variant="default" className="h-7 px-2 text-[10px]">

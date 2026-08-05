@@ -53,23 +53,23 @@ function Page() {
       <Panel title="Active Vector Repositories & Ingested Knowledge Sources" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Knowledge Repository</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Vector Chunk Count</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Embedding Dimension</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Source Count</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Sync Frequency</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Index Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Knowledge Repository</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Vector Chunk Count</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Embedding Dimension</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Source Count</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Sync Frequency</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Index Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {vectorIndexes.map((v) => (
-              <TableRow key={v.repository} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-bold text-xs text-[#1A1D20]">{v.repository}</TableCell>
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{v.chunks}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{v.dimension}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{v.sourceCount}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{v.lastSync}</TableCell>
+              <TableRow key={v.repository} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-bold text-xs text-[#0F172A]">{v.repository}</TableCell>
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{v.chunks}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{v.dimension}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{v.sourceCount}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{v.lastSync}</TableCell>
                 <TableCell><Pill tone="success">{v.status}</Pill></TableCell>
               </TableRow>
             ))}

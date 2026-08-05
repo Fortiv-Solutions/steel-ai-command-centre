@@ -53,23 +53,23 @@ function Page() {
       <Panel title="Active Compliance Standards & ISO Certifications" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Standard Code</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Standard Name</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Facility Coverage</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Last Audit Date</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Certifying Body</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Compliance Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Standard Code</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Standard Name</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Facility Coverage</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Last Audit Date</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Certifying Body</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Compliance Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {complianceStandards.map((c) => (
-              <TableRow key={c.code} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{c.code}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{c.standard}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{c.coverage}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{c.lastAudit}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{c.authority}</TableCell>
+              <TableRow key={c.code} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{c.code}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{c.standard}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{c.coverage}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{c.lastAudit}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{c.authority}</TableCell>
                 <TableCell><Pill tone="success">{c.certStatus}</Pill></TableCell>
               </TableRow>
             ))}

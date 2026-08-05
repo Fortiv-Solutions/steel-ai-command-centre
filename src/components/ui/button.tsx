@@ -5,16 +5,16 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-xs font-bold cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D95A00] disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-xs font-bold cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#E05600] disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-[#D95A00] text-white hover:bg-[#B8561B] active:bg-[#9E521D]", // Molten Orange
-        secondary: "bg-[#C8D0DC] text-[#1A1D20] border border-[#A6ACB6] hover:bg-[#B8BEC8] active:bg-[#A6ACB6]", // Steel Slate
-        outline: "border border-[#A6ACB6] bg-[#E4E8EE] text-[#1A1D20] hover:bg-[#C8D0DC]",
-        ghost: "text-[#1A1D20] hover:bg-[#C8D0DC] hover:text-[#1A1D20]",
+        default: "bg-[#E05600] text-white hover:bg-[#C84600] active:bg-[#A63800] shadow-sm", // Refined Terracotta Orange
+        secondary: "bg-[#F1F5F9] text-[#0F172A] border border-[#E2E8F0] hover:bg-[#E2E8F0]", // Slate Plate
+        outline: "border border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] hover:bg-[#F1F5F9]",
+        ghost: "text-[#0F172A] hover:bg-[#F1F5F9]",
         destructive: "bg-[#9B3227] text-white hover:bg-[#80271E]",
-        link: "text-[#D95A00] underline-offset-4 hover:underline",
+        link: "text-[#E05600] underline-offset-4 hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2",

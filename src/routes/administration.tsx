@@ -80,41 +80,41 @@ function Page() {
         <StatCard label="Roles Configured" value="48 Roles" hint="RBAC matrix" icon={Shield} />
       </div>
 
-      <div className="flex items-center justify-between gap-3 rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] p-3">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-[#1A1D20]">Configured Enterprise Users</h2>
+      <div className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">Configured Enterprise Users</h2>
         <div className="relative w-72">
-          <Search className="pointer-events-none absolute left-2.5 top-2.5 size-3.5 text-[#4A5059]" />
+          <Search className="pointer-events-none absolute left-2.5 top-2.5 size-3.5 text-[#64748B]" />
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search users by name, role or email…"
-            className="h-8 border-[#A6ACB6] bg-[#DCE0E6] pl-8 text-xs text-[#1A1D20]"
+            className="h-8 border-[#E2E8F0] bg-[#FFFFFF] pl-8 text-xs text-[#0F172A]"
           />
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#A6ACB6] bg-[#E4E8EE]">
+      <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">User ID</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Full Name</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Enterprise Role</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Plant Facility Scope</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">License Tier</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">User ID</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Full Name</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Enterprise Role</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Plant Facility Scope</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">License Tier</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filtered.map((u) => (
-              <TableRow key={u.id} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{u.id}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">
+              <TableRow key={u.id} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{u.id}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">
                   {u.name}
-                  <p className="text-[10px] font-normal text-[#4A5059]">{u.email}</p>
+                  <p className="text-[10px] font-normal text-[#475569]">{u.email}</p>
                 </TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{u.role}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{u.plantScope}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{u.role}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{u.plantScope}</TableCell>
                 <TableCell><Pill tone="primary">{u.license}</Pill></TableCell>
                 <TableCell><Pill tone="success">{u.status}</Pill></TableCell>
               </TableRow>

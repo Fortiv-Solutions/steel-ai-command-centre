@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   CheckCircle2,
-  FileCheck,
   Lock,
-  ShieldAlert,
+  ShieldCheck,
   Sliders,
 } from "lucide-react";
 import { PageHeader, Panel, Pill, StatCard } from "@/components/ui-kit";
@@ -19,18 +18,18 @@ import {
 export const Route = createFileRoute("/governance")({
   head: () => ({
     meta: [
-      { title: "AI Governance & Guardrails · Steel AI Command Center" },
-      { name: "description", content: "LLM guardrails, data anonymization, model auditing, and policy enforcement." },
+      { title: "AI Governance & Policy Engine · Steel AI Command Center" },
+      { name: "description", content: "Prompt registry, guardrails, model evaluations, and compliance enforcement." },
     ],
   }),
   component: Page,
 });
 
-const guardrails = [
-  { ruleId: "GRD-01", policy: "PII & Salary Masking", scope: "HR & Finance Queries", enforcement: "Strict Block", auditStatus: "Active", violationCount: 0 },
-  { ruleId: "GRD-02", policy: "Grounding Verification (>95%)", scope: "Company Brain RAG", enforcement: "Fallback to Human", auditStatus: "Active", violationCount: 2 },
-  { ruleId: "GRD-03", policy: "Chemistry Spec Modification Limit", scope: "Melt Shop Copilot", enforcement: "Human Approval Required", auditStatus: "Active", violationCount: 0 },
-  { ruleId: "GRD-04", policy: "PO Value Cap Auto-Sign (₹10L)", scope: "Procurement Agent", enforcement: "Hard Limit", auditStatus: "Active", violationCount: 0 },
+const governanceRules = [
+  { ruleId: "GOV-101", policy: "Grounded RAG Output Constraint (Zero Spec Fabrication)", scope: "MTC & Lab Agents", action: "Strict Block", violationCount: 0, status: "Enforcing" },
+  { ruleId: "GOV-102", policy: "High-Value Commercial Sign-off Threshold (> ₹1.0 Cr)", scope: "Sales & Procurement", action: "Route to Approval Queue", violationCount: 0, status: "Enforcing" },
+  { ruleId: "GOV-103", policy: "PII & Executive Payroll Anonymization Filter", scope: "HR & Finance Copilots", action: "Auto Masking", violationCount: 2, status: "Enforcing" },
+  { ruleId: "GOV-104", policy: "Model Hallucination & Citation Verification Check", scope: "Company Brain RAG", action: "Fallback to Grounded Answer", violationCount: 1, status: "Enforcing" },
 ];
 
 function Page() {
@@ -38,38 +37,38 @@ function Page() {
     <div className="space-y-5">
       <PageHeader
         eyebrow="Platform"
-        title="AI Governance & Safety Guardrails"
-        description="LLM policy enforcement, grounding verification, hallucination protection, and model audit trails."
+        title="AI Governance & Safety Policy Engine"
+        description="Prompt safety guardrails, model evaluation benchmarks, hallucination prevention, and human-in-the-loop escalation rules."
       />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Active Guardrails" value="18 Rules" hint="100% enforced" icon={Sliders} />
-        <StatCard label="Grounding Accuracy" value="99.8%" hint="vector grounded" icon={CheckCircle2} />
-        <StatCard label="Hallucination Risk" value="0.01%" hint="blocked at gate" icon={ShieldAlert} />
-        <StatCard label="Model Provider" value="Grounded LLM" hint="zero data leakage" icon={Lock} />
+        <StatCard label="Enforced Policies" value="42 Rules" hint="100% active" icon={Sliders} />
+        <StatCard label="Guardrail Pass Rate" value="99.98%" delta={0.02} hint="zero data breach" icon={ShieldCheck} />
+        <StatCard label="Model Evaluations" value="58 Benchmark" hint="daily accuracy checks" icon={CheckCircle2} />
+        <StatCard label="Blocked Injections" value="14 Attempted" hint="prompt injection defense" icon={Lock} />
       </div>
 
-      <Panel title="Active AI Model Guardrails & Enforcement Rules" bare>
+      <Panel title="Configured AI Safety Policies & Guardrail Enforcement Rules" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Rule ID</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Governance Policy</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Module Scope</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Enforcement Action</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Violations 30d</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Rule Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Rule ID</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Governance Policy</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Module Scope</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Enforcement Action</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Violations 30d</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Rule Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {guardrails.map((g) => (
-              <TableRow key={g.ruleId} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{g.ruleId}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{g.policy}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{g.scope}</TableCell>
-                <TableCell className="text-xs font-bold text-[#D95A00]">{g.enforcement}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#1A1D20]">{g.violationCount}</TableCell>
-                <TableCell><Pill tone="success">{g.auditStatus}</Pill></TableCell>
+            {governanceRules.map((g) => (
+              <TableRow key={g.ruleId} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{g.ruleId}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{g.policy}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{g.scope}</TableCell>
+                <TableCell><Pill tone="warning">{g.action}</Pill></TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{g.violationCount}</TableCell>
+                <TableCell><Pill tone="success">{g.status}</Pill></TableCell>
               </TableRow>
             ))}
           </TableBody>

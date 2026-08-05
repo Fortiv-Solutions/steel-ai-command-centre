@@ -3,15 +3,12 @@ import { useState } from "react";
 import {
   CheckCircle2,
   Clock,
-  Filter,
   ListTodo,
   Plus,
-  Search,
-  User,
+  Zap,
 } from "lucide-react";
-import { PageHeader, Pill, StatCard, statusTone } from "@/components/ui-kit";
+import { PageHeader, Panel, Pill, StatCard, statusTone } from "@/components/ui-kit";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -24,8 +21,8 @@ import {
 export const Route = createFileRoute("/tasks")({
   head: () => ({
     meta: [
-      { title: "Task Orchestration · Steel AI Command Center" },
-      { name: "description", content: "Accountable task queue across 43 steel manufacturing business functions." },
+      { title: "Task Center & Action Items · Steel AI Command Center" },
+      { name: "description", content: "Plant tasks, maintenance work orders, quality checks, and AI assigned action items." },
     ],
   }),
   component: Page,
@@ -37,40 +34,33 @@ type TaskItem = {
   department: string;
   assignee: string;
   priority: "P1" | "P2" | "P3";
-  status: "In Progress" | "Pending Review" | "Backlog" | "Completed";
   dueDate: string;
-  source: "AI Agent" | "Workflow" | "Human";
+  status: "In Progress" | "Pending Review" | "Completed";
 };
 
-const initialTasks: TaskItem[] = [
-  { id: "TSK-8812", title: "Approve 304L Heat Chemistry Variance for Order #4921", department: "Quality Control", assignee: "Dr. R. Sharma", priority: "P1", status: "In Progress", dueDate: "Today, 18:00", source: "AI Agent" },
-  { id: "TSK-8813", title: "Verify Railway Rake #NDLS-04 Customs Clearance Documents", department: "Logistics", assignee: "V. Kumar", priority: "P1", status: "Pending Review", dueDate: "Today, 19:30", source: "Workflow" },
-  { id: "TSK-8814", title: "Reconcile EAF Unit 1 Energy Tariff Discount Invoice", department: "Finance", assignee: "A. Patel", priority: "P2", status: "In Progress", dueDate: "Tomorrow, 12:00", source: "Human" },
-  { id: "TSK-8815", title: "Inspect Ladle Refractory Wear Score at Bay 2", department: "Melt Shop Maintenance", assignee: "S. Singh", priority: "P1", status: "Pending Review", dueDate: "Tomorrow, 15:00", source: "AI Agent" },
-  { id: "TSK-8816", title: "Update Rate Contract for Heavy Melting Scrap Supplier", department: "Procurement", assignee: "M. Verma", priority: "P3", status: "Backlog", dueDate: "08 Aug 2026", source: "Human" },
-  { id: "TSK-8817", title: "Issue Digital MTC #8894 for Jindal Infra Beam Order", department: "Quality Control", assignee: "P. Nair", priority: "P2", status: "Completed", dueDate: "Yesterday", source: "Workflow" },
-  { id: "TSK-8818", title: "Calibrate Spectrometry Gas Analyzer Oxygen Channel", department: "Lab Operations", assignee: "K. Das", priority: "P2", status: "In Progress", dueDate: "06 Aug 2026", source: "AI Agent" },
+const tasksData: TaskItem[] = [
+  { id: "TSK-301", title: "Recalibrate Bar Mill 2 Laser Sizing Sensor", department: "Rolling Mill", assignee: "Sunil Singh", priority: "P1", dueDate: "Today 16:00", status: "In Progress" },
+  { id: "TSK-302", title: "Verify Spectro Calibration for 304L Heat #H-4921", department: "Quality Lab", assignee: "Dr. Rajesh Sharma", priority: "P2", dueDate: "Today 18:00", status: "Pending Review" },
+  { id: "TSK-303", title: "Review Railway Rake 04 Dispatch Clearance Documents", department: "Logistics", assignee: "Vikram Kumar", priority: "P1", dueDate: "Today 14:00", status: "Completed" },
+  { id: "TSK-304", title: "Inspect EAF Unit 1 Ladle Relining Brick Thickness", department: "Maintenance", assignee: "Aaditya Verma", priority: "P2", dueDate: "Tomorrow 10:00", status: "In Progress" },
 ];
 
 function Page() {
-  const [filter, setFilter] = useState<string>("All");
-  const [search, setSearch] = useState<string>("");
+  const [filter, setFilter] = useState("All");
 
-  const filtered = initialTasks.filter((t) => {
-    const matchesFilter = filter === "All" || t.status === filter;
-    const matchesSearch =
-      t.title.toLowerCase().includes(search.toLowerCase()) ||
-      t.id.toLowerCase().includes(search.toLowerCase()) ||
-      t.department.toLowerCase().includes(search.toLowerCase());
-    return matchesFilter && matchesSearch;
+  const filtered = tasksData.filter((t) => {
+    if (filter === "All") return true;
+    if (filter === "High Priority") return t.priority === "P1";
+    if (filter === "In Progress") return t.status === "In Progress";
+    return true;
   });
 
   return (
     <div className="space-y-5">
       <PageHeader
         eyebrow="Operations"
-        title="Enterprise Task Orchestration"
-        description="Accountable task queue across 43 business functions with SLA tracking. Zero charts required."
+        title="Plant Task & Maintenance Work Order Center"
+        description="Assigned action items, preventive maintenance work orders, lab test tasks, and AI copilot task execution."
         actions={
           <Button size="sm">
             <Plus className="size-3.5" /> Create Task
@@ -78,79 +68,59 @@ function Page() {
         }
       />
 
-      {/* Task KPIs */}
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Open Tasks" value="842" delta={-6.1} hint="across 43 depts" icon={ListTodo} />
-        <StatCard label="AI Generated" value="61%" delta={8.4} hint="workflow triggers" icon={CheckCircle2} />
-        <StatCard label="Overdue Tasks" value="37" delta={-14.2} hint="SLA breach alerts" icon={Clock} />
-        <StatCard label="Avg Resolution" value="2.1 days" delta={-18.6} hint="100% accountable" icon={CheckCircle2} />
+        <StatCard label="Active Tasks" value="142 Tasks" delta={-8} hint="across 43 depts" icon={ListTodo} />
+        <StatCard label="High Priority (P1)" value="12 Critical" hint="sub-4h SLA" icon={Clock} />
+        <StatCard label="AI Assigned Tasks" value="68 Tasks" delta={14.2} hint="auto-generated" icon={Zap} />
+        <StatCard label="Completed (30d)" value="1,840 Signed" delta={9.2} hint="100% verified" icon={CheckCircle2} />
       </div>
 
-      {/* Filter and Search Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] p-3">
-        <div className="flex flex-wrap gap-1.5">
-          {["All", "In Progress", "Pending Review", "Backlog", "Completed"].map((s) => (
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">Plant Action Item Queue</h2>
+        <div className="flex gap-1.5">
+          {["All", "High Priority", "In Progress"].map((f) => (
             <Button
-              key={s}
+              key={f}
               size="sm"
-              variant={filter === s ? "default" : "secondary"}
-              onClick={() => setFilter(s)}
+              variant={filter === f ? "default" : "secondary"}
+              onClick={() => setFilter(f)}
             >
-              {s}
+              {f}
             </Button>
           ))}
         </div>
-        <div className="relative w-72">
-          <Search className="pointer-events-none absolute left-2.5 top-2.5 size-3.5 text-[#4A5059]" />
-          <Input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Filter tasks by title or ID…"
-            className="h-8 border-[#A6ACB6] bg-[#DCE0E6] pl-8 text-xs text-[#1A1D20]"
-          />
-        </div>
       </div>
 
-      {/* Task List Table */}
-      <div className="rounded-xl border border-[#A6ACB6] bg-[#E4E8EE]">
+      <Panel title="Action Item Register & Work Order Queue" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Task ID</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Task Description</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Department</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Assignee</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Priority</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Status</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Source</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Due Date</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Task ID</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Task Description</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Department</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Assignee</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Priority</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Due Date</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filtered.map((t) => (
-              <TableRow key={t.id} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{t.id}</TableCell>
-                <TableCell className="max-w-md text-xs font-bold text-[#1A1D20]">{t.title}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{t.department}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20] flex items-center gap-1.5 py-3">
-                  <User className="size-3 text-[#7A808A]" />
-                  <span>{t.assignee}</span>
-                </TableCell>
+              <TableRow key={t.id} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{t.id}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{t.title}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{t.department}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{t.assignee}</TableCell>
                 <TableCell>
-                  <Pill tone={t.priority === "P1" ? "destructive" : t.priority === "P2" ? "warning" : "neutral"}>
-                    {t.priority}
-                  </Pill>
+                  <Pill tone={t.priority === "P1" ? "destructive" : "warning"}>{t.priority}</Pill>
                 </TableCell>
-                <TableCell>
-                  <Pill tone={statusTone(t.status)}>{t.status}</Pill>
-                </TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{t.source}</TableCell>
-                <TableCell className="text-xs font-bold text-[#4A5059]">{t.dueDate}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{t.dueDate}</TableCell>
+                <TableCell><Pill tone={statusTone(t.status)}>{t.status}</Pill></TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </div>
+      </Panel>
     </div>
   );
 }

@@ -1,15 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import {
+  Building2,
   CheckCircle2,
   Clock,
   FolderKanban,
-  Plus,
-  Rocket,
-  TrendingUp,
+  Zap,
 } from "lucide-react";
 import { Meter, PageHeader, Panel, Pill, StatCard, statusTone } from "@/components/ui-kit";
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -22,111 +19,69 @@ import {
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Programme & Project Delivery · Steel AI Command Center" },
-      { name: "description", content: "Plant transformation projects, AI rollouts, and roadmaps." },
+      { title: "Plant Projects & Capital Expansion · Steel AI Command Center" },
+      { name: "description", content: "Capex projects, furnace debottlenecking, solar installation, and mill upgrades." },
     ],
   }),
   component: Page,
 });
 
-type ProjectItem = {
-  id: string;
-  title: string;
-  facility: string;
-  owner: string;
-  phase: string;
-  progress: number;
-  budget: string;
-  benefits: string;
-  status: "In Build" | "Piloting" | "Live" | "Planned";
-};
-
-const projectInitiatives: ProjectItem[] = [
-  { id: "PRJ-101", title: "EAF Melt Shop Oxygen Injection AI Optimization", facility: "Melt Shop 1", owner: "Dr. R. Sharma", phase: "Phase 2: Intelligence", progress: 85, budget: "₹1.4 Cr", benefits: "₹4.8 Cr / yr", status: "In Build" },
-  { id: "PRJ-102", title: "Scrap Yard Stockyard Inventory AI Vision System", facility: "Raw Material Yard", owner: "V. Kumar", phase: "Phase 2: Intelligence", progress: 92, budget: "₹85 L", benefits: "₹2.1 Cr / yr", status: "Piloting" },
-  { id: "PRJ-103", title: "Mill Test Certificate (MTC) Auto-Verification Pipeline", facility: "Quality Lab", owner: "P. Nair", phase: "Phase 1: Foundation", progress: 100, budget: "₹40 L", benefits: "₹1.8 Cr / yr", status: "Live" },
-  { id: "PRJ-104", title: "Bar & TMT Mill Reheating Furnace Fuel Efficiency", facility: "Rolling Mill 2", owner: "S. Singh", phase: "Phase 3: Autonomous", progress: 45, budget: "₹2.2 Cr", benefits: "₹6.4 Cr / yr", status: "In Build" },
-  { id: "PRJ-105", title: "SAP S/4HANA Accounts Payable Automation Agent", facility: "Corporate HQ", owner: "A. Patel", phase: "Phase 1: Foundation", progress: 100, budget: "₹60 L", benefits: "₹3.2 Cr / yr", status: "Live" },
+const plantProjects = [
+  { id: "PRJ-2026-01", name: "EAF Unit 3 Oxygen Injection System Upgrade", budget: "₹18.5 Cr", spent: "₹14.2 Cr", progress: 78, lead: "Dr. Rajesh Sharma", status: "In Progress" },
+  { id: "PRJ-2026-02", name: "Bar Mill 2 Flying Shear Automation & AI Cobble Sensor", budget: "₹4.2 Cr", spent: "₹4.2 Cr", progress: 100, lead: "Sunil Singh", status: "Completed" },
+  { id: "PRJ-2026-03", name: "15 MW Roof Solar PV Plant Installation", budget: "₹35.0 Cr", spent: "₹12.0 Cr", progress: 35, lead: "Vikas Gupta", status: "In Progress" },
+  { id: "PRJ-2026-04", name: "Slag Recycling & Zero-Waste Processing Facility", budget: "₹8.0 Cr", spent: "₹1.5 Cr", progress: 20, lead: "Ananya Patel", status: "In Progress" },
 ];
 
 function Page() {
-  const [filter, setFilter] = useState("All");
-
-  const filtered = projectInitiatives.filter(
-    (p) => filter === "All" || p.status === filter,
-  );
-
   return (
     <div className="space-y-5">
       <PageHeader
         eyebrow="Operations"
-        title="Programme & Project Delivery Workspace"
-        description="Plant transformation projects, AI implementation roadmaps, and business benefit realization."
-        actions={
-          <Button size="sm">
-            <Plus className="size-3.5" /> New Initiative
-          </Button>
-        }
+        title="Plant Projects & Capex Expansion Workspace"
+        description="Debottlenecking projects, furnace automation, renewable energy integration, and capital expenditure tracking."
       />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Active Projects" value="46 Initiatives" delta={4} hint="across 5 plants" icon={FolderKanban} />
-        <StatCard label="On Schedule Rate" value="82%" delta={5.2} hint="milestone tracking" icon={Clock} />
-        <StatCard label="Phase 2 Progress" value="72%" delta={6.0} hint="Intelligence phase" icon={Rocket} />
-        <StatCard label="Benefits Realised" value="₹31.4 Cr" delta={12.8} hint="annualised ROI" icon={TrendingUp} />
+        <StatCard label="Active Capex Projects" value="12 Projects" hint="₹65.7 Cr allocated" icon={FolderKanban} />
+        <StatCard label="Budget Variance" value="-2.4%" delta={-2.4} hint="under budget" icon={CheckCircle2} />
+        <StatCard label="On-Time Delivery" value="94.2%" delta={4.1} hint="milestone tracking" icon={Clock} />
+        <StatCard label="Completed 2026" value="8 Milestones" hint="fully commissioned" icon={Zap} />
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#A6ACB6] bg-[#E4E8EE] p-3">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-[#1A1D20]">Active Transformation Initiatives</h2>
-        <div className="flex gap-1.5">
-          {["All", "In Build", "Piloting", "Live", "Planned"].map((s) => (
-            <Button
-              key={s}
-              size="sm"
-              variant={filter === s ? "default" : "secondary"}
-              onClick={() => setFilter(s)}
-            >
-              {s}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      <div className="rounded-xl border border-[#A6ACB6] bg-[#E4E8EE]">
+      <Panel title="Capital Expenditure Projects & Commissioning Milestones" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">Project ID</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Initiative Name</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Plant Facility</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Project Lead</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Roadmap Phase</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Progress</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Annual Benefits</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">Project ID</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Project Name & Scope</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Capex Budget</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Spent to Date</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Milestone Progress</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Project Lead</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filtered.map((p) => (
-              <TableRow key={p.id} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{p.id}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{p.title}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{p.facility}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{p.owner}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{p.phase}</TableCell>
-                <TableCell className="w-40">
+            {plantProjects.map((p) => (
+              <TableRow key={p.id} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{p.id}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{p.name}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{p.budget}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#475569]">{p.spent}</TableCell>
+                <TableCell className="w-36">
                   <div className="flex items-center gap-2">
                     <Meter value={p.progress} tone={p.progress === 100 ? "success" : "primary"} />
-                    <span className="text-[10px] font-bold text-[#4A5059]">{p.progress}%</span>
+                    <span className="text-[10px] font-bold text-[#475569]">{p.progress}%</span>
                   </div>
                 </TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#D95A00]">{p.benefits}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{p.lead}</TableCell>
                 <TableCell><Pill tone={statusTone(p.status)}>{p.status}</Pill></TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </div>
+      </Panel>
     </div>
   );
 }

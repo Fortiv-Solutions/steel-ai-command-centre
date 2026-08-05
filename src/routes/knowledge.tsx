@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   FileText,
   Search,
+  Sparkles,
 } from "lucide-react";
 import { PageHeader, Panel, Pill, StatCard } from "@/components/ui-kit";
 import {
@@ -19,17 +20,17 @@ export const Route = createFileRoute("/knowledge")({
   head: () => ({
     meta: [
       { title: "Knowledge Center · Steel AI Command Center" },
-      { name: "description", content: "Plant SOPs, maintenance guides, chemistry formulas, and operational manuals." },
+      { name: "description", content: "SOP procedures, chemical specifications, plant safety guidelines, and metallurgical manuals." },
     ],
   }),
   component: Page,
 });
 
-const sopLibrary = [
-  { code: "SOP-EAF-01", title: "Electric Arc Furnace Slag Foaming Protocol", dept: "Melt Shop", lastUpdate: "15 Jun 2026", views: "1,420", status: "Verified" },
-  { code: "SOP-LRF-04", title: "Ladle Refining Argon Purging & Desulfurization", dept: "Metallurgy", lastUpdate: "02 Jul 2026", views: "980", status: "Verified" },
-  { code: "SOP-ROLL-12", title: "TMT Bar Thermex Quenching Pressure Control", dept: "Rolling Mill", lastUpdate: "28 May 2026", views: "2,150", status: "Verified" },
-  { code: "SOP-QA-08", title: "Ultrasonic NDT Defect Depth Classification", dept: "Quality Control", lastUpdate: "10 Jul 2026", views: "840", status: "Verified" },
+const sopsData = [
+  { code: "SOP-EAF-012", title: "Electric Arc Furnace Tap Temperature & Slag Foaming Procedure", dept: "Melt Shop", lastUpdate: "14 May 2026", views: "1,420 views", status: "Verified Active" },
+  { code: "SOP-MTC-004", title: "EN 10204 3.1 Spectro Tensile Audit & Auto-Signing Protocol", dept: "Quality Lab", lastUpdate: "02 Jun 2026", views: "2,150 views", status: "Verified Active" },
+  { code: "SOP-ROLL-088", title: "Bar Mill Flying Shear Cobble Prevention & Laser Calibration", dept: "Rolling Mill", lastUpdate: "28 Apr 2026", views: "890 views", status: "Verified Active" },
+  { code: "SOP-LOG-019", title: "Railway Rake 59-Wagon Loading & Demurrage Prevention", dept: "Logistics", lastUpdate: "10 Jun 2026", views: "1,120 views", status: "Verified Active" },
 ];
 
 function Page() {
@@ -37,37 +38,37 @@ function Page() {
     <div className="space-y-5">
       <PageHeader
         eyebrow="Knowledge"
-        title="Knowledge Center & SOP Library"
-        description="Standard Operating Procedures (SOPs), melt shop maintenance protocols, and metallurgical chemistry manuals."
+        title="Plant Knowledge Center & Standard Operating Procedures"
+        description="Searchable repository of metallurgical manuals, melt shop SOPs, equipment maintenance guides, and safety protocols."
       />
 
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Standard SOPs" value="340 Procedures" hint="100% digital" icon={BookOpen} />
-        <StatCard label="Operator Searches" value="14,200 / mo" hint="sub-second response" icon={Search} />
-        <StatCard label="Verified Guidelines" value="100%" hint="QA approved" icon={CheckCircle2} />
-        <StatCard label="Avg Reading Time" value="1.5 mins" hint="summarized by AI" icon={FileText} />
+        <StatCard label="Active SOP Manuals" value="482 Documents" hint="100% vector indexed" icon={BookOpen} />
+        <StatCard label="Monthly RAG Searches" value="14,200 Queries" delta={18.4} hint="by plant engineers" icon={Search} />
+        <StatCard label="Grounded Accuracy" value="99.8%" hint="verified against ISO" icon={CheckCircle2} />
+        <StatCard label="AI Summaries Generated" value="3,840 Answers" delta={12.1} hint="instant copilot retrieval" icon={Sparkles} />
       </div>
 
-      <Panel title="Standard Operating Procedures (SOP) & Plant Guidelines" bare>
+      <Panel title="Configured Plant SOPs & Metallurgical Operating Manuals" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#DCE0E6]">
-              <TableHead className="font-bold text-[#1A1D20]">SOP Code</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Procedure Title</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Department</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Last Revised</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Views</TableHead>
-              <TableHead className="font-bold text-[#1A1D20]">Status</TableHead>
+            <TableRow className="bg-[#F1F5F9]">
+              <TableHead className="font-bold text-[#0F172A]">SOP Code</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Procedure Title</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Department</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Last Revised</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Views</TableHead>
+              <TableHead className="font-bold text-[#0F172A]">Status</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {sopLibrary.map((s) => (
-              <TableRow key={s.code} className="hover:bg-[#C8D0DC]">
-                <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{s.code}</TableCell>
-                <TableCell className="text-xs font-bold text-[#1A1D20]">{s.title}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{s.dept}</TableCell>
-                <TableCell className="text-xs font-semibold text-[#4A5059]">{s.lastUpdate}</TableCell>
-                <TableCell className="text-xs font-bold tabular-nums text-[#1A1D20]">{s.views}</TableCell>
+            {sopsData.map((s) => (
+              <TableRow key={s.code} className="hover:bg-[#F1F5F9]">
+                <TableCell className="font-mono text-xs font-bold text-[#E05600]">{s.code}</TableCell>
+                <TableCell className="text-xs font-bold text-[#0F172A]">{s.title}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{s.dept}</TableCell>
+                <TableCell className="text-xs font-semibold text-[#475569]">{s.lastUpdate}</TableCell>
+                <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{s.views}</TableCell>
                 <TableCell><Pill tone="success">{s.status}</Pill></TableCell>
               </TableRow>
             ))}
