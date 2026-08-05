@@ -73,7 +73,7 @@ function Page() {
         <StatCard label="AI Alignment Rate" value="93.6%" delta={1.4} hint="human vs AI agreement" icon={CheckCircle2} />
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-3">
         <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">Pending Approval Action Queue</h2>
         <div className="flex gap-1.5">
           {["All", "High Risk", "AI Approved"].map((f) => (
@@ -92,7 +92,7 @@ function Page() {
       <Panel title="Decision Action Queue" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Approval ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Decision Subject</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Department</TableHead>
@@ -105,7 +105,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {filtered.map((a) => (
-              <TableRow key={a.id} className="hover:bg-[#F1F5F9]">
+              <TableRow key={a.id} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{a.id}</TableCell>
                 <TableCell className="max-w-md text-xs font-bold text-[#0F172A]">{a.title}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{a.department}</TableCell>

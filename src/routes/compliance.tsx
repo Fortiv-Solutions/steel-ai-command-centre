@@ -53,7 +53,7 @@ function Page() {
       <Panel title="Active Compliance Standards & ISO Certifications" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Standard Code</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Standard Name</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Facility Coverage</TableHead>
@@ -64,7 +64,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {complianceStandards.map((c) => (
-              <TableRow key={c.code} className="hover:bg-[#F1F5F9]">
+              <TableRow key={c.code} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{c.code}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{c.standard}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{c.coverage}</TableCell>

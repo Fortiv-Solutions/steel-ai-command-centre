@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Verified Mill Test Certificates (Trailing 90 Days)" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Cert No</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Heat #</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Customer Entity</TableHead>
@@ -65,7 +65,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {mtcCertificatesData.map((m) => (
-              <TableRow key={m.certNo} className="hover:bg-[#F1F5F9]">
+              <TableRow key={m.certNo} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{m.certNo}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{m.heat}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{m.customer}</TableCell>

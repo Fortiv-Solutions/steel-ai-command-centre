@@ -75,7 +75,7 @@ function Page() {
         <StatCard label="Completed (30d)" value="1,840 Signed" delta={9.2} hint="100% verified" icon={CheckCircle2} />
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-3">
         <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">Plant Action Item Queue</h2>
         <div className="flex gap-1.5">
           {["All", "High Priority", "In Progress"].map((f) => (
@@ -94,7 +94,7 @@ function Page() {
       <Panel title="Action Item Register & Work Order Queue" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Task ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Task Description</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Department</TableHead>
@@ -106,7 +106,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {filtered.map((t) => (
-              <TableRow key={t.id} className="hover:bg-[#F1F5F9]">
+              <TableRow key={t.id} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{t.id}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{t.title}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{t.department}</TableCell>

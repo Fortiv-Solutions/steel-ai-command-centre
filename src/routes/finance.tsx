@@ -53,7 +53,7 @@ function Page() {
       <Panel title="Cost Per Tonne Conversion & Material Ledger" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Cost Component</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Cost Per Tonne</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Budget Variance</TableHead>
@@ -63,7 +63,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {costLedgerData.map((f) => (
-              <TableRow key={f.component} className="hover:bg-[#F1F5F9]">
+              <TableRow key={f.component} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-bold text-xs text-[#0F172A]">{f.component}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#E05600]">{f.costPerTon}</TableCell>
                 <TableCell className="text-xs font-bold text-[#B87514]">{f.budgetVar}</TableCell>

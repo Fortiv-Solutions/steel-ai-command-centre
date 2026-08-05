@@ -53,7 +53,7 @@ function Page() {
       <Panel title="Active Vector Repositories & Ingested Knowledge Sources" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Knowledge Repository</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Vector Chunk Count</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Embedding Dimension</TableHead>
@@ -64,7 +64,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {vectorIndexes.map((v) => (
-              <TableRow key={v.repository} className="hover:bg-[#F1F5F9]">
+              <TableRow key={v.repository} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-bold text-xs text-[#0F172A]">{v.repository}</TableCell>
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{v.chunks}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{v.dimension}</TableCell>

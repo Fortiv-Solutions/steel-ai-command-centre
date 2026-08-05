@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Live Plant Shift Rostering & Safety Compliance" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Shift Schedule</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Plant Facility / Mill</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Headcount On-Duty</TableHead>
@@ -63,7 +63,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {shiftData.map((s) => (
-              <TableRow key={s.shift} className="hover:bg-[#F1F5F9]">
+              <TableRow key={s.shift} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-bold text-xs text-[#0F172A]">{s.shift}</TableCell>
                 <TableCell className="text-xs font-bold text-[#E05600]">{s.plant}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{s.headcount}</TableCell>

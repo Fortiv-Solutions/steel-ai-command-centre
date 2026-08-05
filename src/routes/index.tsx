@@ -181,7 +181,7 @@ function Dashboard() {
   return (
     <div className="space-y-5">
       {/* 1. Light Industrial Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] px-4 py-3">
         <div className="flex items-center gap-3">
           <div className="grid size-8 place-items-center rounded bg-[#E05600] text-white">
             <Flame className="size-4" />
@@ -191,7 +191,7 @@ function Dashboard() {
               <h1 className="text-sm font-bold uppercase tracking-wider text-[#0F172A]">
                 AI Command Center
               </h1>
-              <span className="rounded bg-[#F1F5F9] px-2 py-0.5 text-[10px] font-bold text-[#B87514] border border-[#E2E8F0]">
+              <span className="rounded bg-[#FFFFFF] px-2 py-0.5 text-[10px] font-bold text-[#B87514] border border-[#E2E8F0]">
                 Integrated Plant Scope
               </span>
             </div>
@@ -246,13 +246,13 @@ function Dashboard() {
             return (
               <div
                 key={domain.title}
-                className="flex flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 transition-colors hover:border-[#CBD5E1]"
+                className="flex flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 transition-colors hover:border-[#CBD5E1]"
               >
                 <div>
                   {/* Domain Header */}
                   <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="grid size-8 place-items-center rounded bg-[#F1F5F9] text-[#E05600] border border-[#E2E8F0]">
+                      <div className="grid size-8 place-items-center rounded bg-[#FFFFFF] text-[#E05600] border border-[#E2E8F0]">
                         <DomainIcon className="size-4" />
                       </div>
                       <div>
@@ -274,7 +274,7 @@ function Dashboard() {
                   </div>
 
                   {/* Domain Metrics */}
-                  <div className="my-3 grid grid-cols-3 gap-2 rounded-lg bg-[#F1F5F9] p-2.5 text-center border border-[#E2E8F0]">
+                  <div className="my-3 grid grid-cols-3 gap-2 rounded-lg bg-[#FFFFFF] p-2.5 text-center border border-[#E2E8F0]">
                     <div>
                       <p className="text-[10px] font-semibold text-[#475569]">Submodules</p>
                       <p className="text-sm font-bold text-[#0F172A]">{domain.modulesCount}</p>
@@ -414,7 +414,7 @@ function Dashboard() {
                       key={d.slug}
                       to="/departments/$slug"
                       params={{ slug: d.slug }}
-                      className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-[#F1F5F9]"
+                      className="flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-[#FFFFFF]"
                     >
                       <Bot className="size-3.5 text-[#9E521D]" />
                       <span className="min-w-0 flex-1 truncate text-xs font-bold text-[#0F172A]">

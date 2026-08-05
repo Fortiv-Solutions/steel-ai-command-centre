@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Capital Expenditure Projects & Commissioning Milestones" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Project ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Project Name & Scope</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Capex Budget</TableHead>
@@ -64,7 +64,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {plantProjects.map((p) => (
-              <TableRow key={p.id} className="hover:bg-[#F1F5F9]">
+              <TableRow key={p.id} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{p.id}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{p.name}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{p.budget}</TableCell>

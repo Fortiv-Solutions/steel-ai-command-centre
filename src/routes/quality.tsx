@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Recent Chemical Spectrometry & Mechanical Quality Logs" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Batch / Coil ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Inspection Test Type</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Steel Grade</TableHead>
@@ -63,7 +63,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {qualityInspectionLogs.map((q) => (
-              <TableRow key={q.batchId} className="hover:bg-[#F1F5F9]">
+              <TableRow key={q.batchId} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{q.batchId}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{q.testType}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{q.grade}</TableCell>

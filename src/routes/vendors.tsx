@@ -51,7 +51,7 @@ function Page() {
       <Panel title="Raw Material Supplier Quality & Delivery SLA Scorecards" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Vendor Entity Name</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Supply Category</TableHead>
               <TableHead className="font-bold text-[#0F172A]">SLA Rating</TableHead>
@@ -62,7 +62,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {vendorPerformanceData.map((v) => (
-              <TableRow key={v.vendor} className="hover:bg-[#F1F5F9]">
+              <TableRow key={v.vendor} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-bold text-xs text-[#0F172A]">{v.vendor}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{v.category}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#E05600]">{v.rating} / 5.0</TableCell>

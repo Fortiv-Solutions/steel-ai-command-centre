@@ -149,7 +149,7 @@ export function ModuleWorkspace({
           <Panel title="EAF Melt Shop Heat Log & Chemical Composition" bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#F1F5F9]">
+                <TableRow className="bg-[#FFFFFF]">
                   <TableHead className="font-bold text-[#0F172A]">Heat ID</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Furnace / Unit</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Steel Grade</TableHead>
@@ -162,7 +162,7 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {heatLogsData.map((h) => (
-                  <TableRow key={h.id} className="hover:bg-[#F1F5F9]">
+                  <TableRow key={h.id} className="hover:bg-[#FFFFFF]">
                     <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{h.id}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{h.furnace}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{h.grade}</TableCell>
@@ -193,11 +193,11 @@ export function ModuleWorkspace({
         content: (
           <Panel title="Slag Foaming & Ferro-Alloy Addition Guidance">
             <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-lg border border-[#E2E8F0] bg-[#F1F5F9] p-3 text-xs font-bold text-[#0F172A]">
+              <div className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-3 text-xs font-bold text-[#0F172A]">
                 <Flame className="mb-2 size-4 text-[#D95A00]" />
                 Target Carbon: 0.045% · Current: 0.040% (Add 15kg Injection Carbon)
               </div>
-              <div className="rounded-lg border border-[#E2E8F0] bg-[#F1F5F9] p-3 text-xs font-bold text-[#0F172A]">
+              <div className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-3 text-xs font-bold text-[#0F172A]">
                 <Sparkles className="mb-2 size-4 text-[#9E521D]" />
                 Ferro Silicon 75%: Add 85kg before Tapping
               </div>
@@ -215,7 +215,7 @@ export function ModuleWorkspace({
           <Panel title="Verified Mill Test Certificates (Trailing 90 Days)" bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#F1F5F9]">
+                <TableRow className="bg-[#FFFFFF]">
                   <TableHead className="font-bold text-[#0F172A]">Cert No</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Heat #</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Customer</TableHead>
@@ -228,7 +228,7 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {mtcCertificatesData.map((m) => (
-                  <TableRow key={m.certNo} className="hover:bg-[#F1F5F9]">
+                  <TableRow key={m.certNo} className="hover:bg-[#FFFFFF]">
                     <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{m.certNo}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{m.heat}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{m.customer}</TableCell>
@@ -263,7 +263,7 @@ export function ModuleWorkspace({
           <Panel title="Finished Steel & Raw Scrap Yard Locations" bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#F1F5F9]">
+                <TableRow className="bg-[#FFFFFF]">
                   <TableHead className="font-bold text-[#0F172A]">Bay / Yard</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Category</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Stock Tonnage</TableHead>
@@ -274,7 +274,7 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {inventoryStockData.map((inv) => (
-                  <TableRow key={inv.location} className="hover:bg-[#F1F5F9]">
+                  <TableRow key={inv.location} className="hover:bg-[#FFFFFF]">
                     <TableCell className="font-bold text-xs text-[#D95A00]">{inv.location}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{inv.category}</TableCell>
                     <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{inv.tonnage}</TableCell>
@@ -307,7 +307,7 @@ export function ModuleWorkspace({
           <Panel title="Active Dispatch Rakes & Export Truck Convoy Status" bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#F1F5F9]">
+                <TableRow className="bg-[#FFFFFF]">
                   <TableHead className="font-bold text-[#0F172A]">Rake / Fleet ID</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Destination Terminal</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Wagon Count</TableHead>
@@ -318,7 +318,7 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {logisticsDispatchData.map((log) => (
-                  <TableRow key={log.rakeId} className="hover:bg-[#F1F5F9]">
+                  <TableRow key={log.rakeId} className="hover:bg-[#FFFFFF]">
                     <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{log.rakeId}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{log.destination}</TableCell>
                     <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{log.wagons}</TableCell>
@@ -342,7 +342,7 @@ export function ModuleWorkspace({
           <Panel title="Steel Conversion Cost & Liquid Steel Cost Ledger" bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#F1F5F9]">
+                <TableRow className="bg-[#FFFFFF]">
                   <TableHead className="font-bold text-[#0F172A]">Cost Component</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Cost / Tonne</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Budget Variance</TableHead>
@@ -352,7 +352,7 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {financeLedgerData.map((f) => (
-                  <TableRow key={f.component} className="hover:bg-[#F1F5F9]">
+                  <TableRow key={f.component} className="hover:bg-[#FFFFFF]">
                     <TableCell className="font-bold text-xs text-[#0F172A]">{f.component}</TableCell>
                     <TableCell className="text-xs font-bold tabular-nums text-[#D95A00]">{f.costPerTon}</TableCell>
                     <TableCell className="text-xs font-bold text-[#B87514]">{f.budgetVar}</TableCell>
@@ -375,7 +375,7 @@ export function ModuleWorkspace({
           <Panel title="Raw Material Supplier Quality & Delivery SLA Performance" bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#F1F5F9]">
+                <TableRow className="bg-[#FFFFFF]">
                   <TableHead className="font-bold text-[#0F172A]">Vendor Name</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Category</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Rating</TableHead>
@@ -386,7 +386,7 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {vendorPerformanceData.map((v) => (
-                  <TableRow key={v.vendor} className="hover:bg-[#F1F5F9]">
+                  <TableRow key={v.vendor} className="hover:bg-[#FFFFFF]">
                     <TableCell className="font-bold text-xs text-[#0F172A]">{v.vendor}</TableCell>
                     <TableCell className="text-xs font-bold text-[#475569]">{v.category}</TableCell>
                     <TableCell className="text-xs font-bold tabular-nums text-[#D95A00]">{v.rating} / 5.0</TableCell>
@@ -432,7 +432,7 @@ export function ModuleWorkspace({
                       key={d.slug}
                       to="/departments/$slug"
                       params={{ slug: d.slug }}
-                      className="flex flex-wrap items-center gap-4 px-4 py-3 text-xs font-bold transition-colors hover:bg-[#F1F5F9]"
+                      className="flex flex-wrap items-center gap-4 px-4 py-3 text-xs font-bold transition-colors hover:bg-[#FFFFFF]"
                     >
                       <span className="min-w-52 flex-1 font-bold text-[#0F172A]">{d.name}</span>
                       <Pill tone={statusTone(d.maturity)}>{d.maturity}</Pill>
@@ -464,7 +464,7 @@ export function ModuleWorkspace({
                   key={a.slug}
                   to="/agents/$slug"
                   params={{ slug: a.slug }}
-                  className="flex flex-wrap items-center gap-3 px-4 py-3 transition-colors hover:bg-[#F1F5F9]"
+                  className="flex flex-wrap items-center gap-3 px-4 py-3 transition-colors hover:bg-[#FFFFFF]"
                 >
                   <Bot className="size-4 text-[#D95A00]" />
                   <span className="min-w-48 flex-1 text-xs font-bold text-[#0F172A]">{a.name}</span>
@@ -491,7 +491,7 @@ export function ModuleWorkspace({
           <Panel title={`Automation Opportunities in ${title}`} bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#F1F5F9]">
+                <TableRow className="bg-[#FFFFFF]">
                   <TableHead className="font-bold text-[#0F172A]">ID</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Opportunity</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Priority</TableHead>
@@ -502,7 +502,7 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {relAutomations.map((a) => (
-                  <TableRow key={a.id} className="hover:bg-[#F1F5F9]">
+                  <TableRow key={a.id} className="hover:bg-[#FFFFFF]">
                     <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{a.id}</TableCell>
                     <TableCell className="max-w-md text-xs font-bold text-[#0F172A]">{a.title}</TableCell>
                     <TableCell>
@@ -550,7 +550,7 @@ export function ModuleWorkspace({
 
       {/* Dynamic Domain-Tailored Tabs */}
       <Tabs defaultValue={domainTabs[0]?.id || "domain-overview"}>
-        <TabsList className="mb-4 flex-wrap border-[#E2E8F0] bg-[#F1F5F9]">
+        <TabsList className="mb-4 flex-wrap border-[#E2E8F0] bg-[#FFFFFF]">
           {domainTabs.map((t) => (
             <TabsTrigger
               key={t.id}

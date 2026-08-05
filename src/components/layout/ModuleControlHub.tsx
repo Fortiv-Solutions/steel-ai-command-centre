@@ -128,55 +128,18 @@ const hubConfigs: Record<string, ControlHubConfig> = {
 export function ModuleControlHub() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  // Determine active hub
   let key = "executive";
-  if (
-    pathname.startsWith("/agents") ||
-    pathname.startsWith("/copilots") ||
-    pathname.startsWith("/automation") ||
-    pathname.startsWith("/workflow-studio")
-  ) {
+  if (pathname.startsWith("/agents") || pathname.startsWith("/copilots") || pathname.startsWith("/automation") || pathname.startsWith("/workflow-studio")) {
     key = "ai";
-  } else if (
-    pathname.startsWith("/company-brain") ||
-    pathname.startsWith("/documents") ||
-    pathname.startsWith("/knowledge") ||
-    pathname.startsWith("/reports")
-  ) {
+  } else if (pathname.startsWith("/company-brain") || pathname.startsWith("/documents") || pathname.startsWith("/knowledge") || pathname.startsWith("/reports")) {
     key = "knowledge";
-  } else if (
-    pathname.startsWith("/heat-intelligence") ||
-    pathname.startsWith("/mtc") ||
-    pathname.startsWith("/materials") ||
-    pathname.startsWith("/production") ||
-    pathname.startsWith("/inventory") ||
-    pathname.startsWith("/logistics")
-  ) {
+  } else if (pathname.startsWith("/heat-intelligence") || pathname.startsWith("/mtc") || pathname.startsWith("/materials") || pathname.startsWith("/production") || pathname.startsWith("/inventory") || pathname.startsWith("/logistics")) {
     key = "manufacturing";
-  } else if (
-    pathname.startsWith("/departments") ||
-    pathname.startsWith("/projects") ||
-    pathname.startsWith("/tasks") ||
-    pathname.startsWith("/approvals") ||
-    pathname.startsWith("/risk") ||
-    pathname.startsWith("/quality")
-  ) {
+  } else if (pathname.startsWith("/departments") || pathname.startsWith("/projects") || pathname.startsWith("/tasks") || pathname.startsWith("/approvals") || pathname.startsWith("/risk") || pathname.startsWith("/quality")) {
     key = "operations";
-  } else if (
-    pathname.startsWith("/customers") ||
-    pathname.startsWith("/vendors") ||
-    pathname.startsWith("/finance") ||
-    pathname.startsWith("/hr") ||
-    pathname.startsWith("/compliance")
-  ) {
+  } else if (pathname.startsWith("/customers") || pathname.startsWith("/vendors") || pathname.startsWith("/finance") || pathname.startsWith("/hr") || pathname.startsWith("/compliance")) {
     key = "business";
-  } else if (
-    pathname.startsWith("/integrations") ||
-    pathname.startsWith("/security") ||
-    pathname.startsWith("/governance") ||
-    pathname.startsWith("/administration") ||
-    pathname.startsWith("/settings")
-  ) {
+  } else if (pathname.startsWith("/integrations") || pathname.startsWith("/security") || pathname.startsWith("/governance") || pathname.startsWith("/administration") || pathname.startsWith("/settings")) {
     key = "platform";
   }
 
@@ -184,27 +147,27 @@ export function ModuleControlHub() {
   const HubIcon = hub.icon;
 
   return (
-    <div className="mb-5 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 shadow-sm">
+    <div className="mb-5 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 shadow-sm">
       {/* Header Info */}
       <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="grid size-9 place-items-center rounded-lg bg-[#E05600] text-white shadow-sm">
+          <div className="grid size-9 place-items-center rounded-lg bg-[#E05600] text-white">
             <HubIcon className="size-5" />
           </div>
           <div>
             <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
               {hub.title}
             </h2>
-            <p className="text-[11px] font-medium text-[#475569]">{hub.subtitle}</p>
+            <p className="text-[11px] font-medium text-[#64748B]">{hub.subtitle}</p>
           </div>
         </div>
-        <span className="rounded-full border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-1 text-[11px] font-bold text-[#475569]">
+        <span className="rounded-full border border-[#E2E8F0] px-3 py-1 text-[11px] font-bold text-[#64748B]">
           {hub.submodules.length} Submodules
         </span>
       </div>
 
       {/* Horizontal Submodule Navigation Pills */}
-      <div className="flex flex-wrap gap-2 pt-1 border-t border-[#E2E8F0]">
+      <div className="flex flex-wrap gap-2 border-t border-[#E2E8F0] pt-3">
         {hub.submodules.map((sub) => {
           const active = sub.to === "/" ? pathname === "/" : pathname.startsWith(sub.to);
           const SubIcon = sub.icon;
@@ -213,13 +176,13 @@ export function ModuleControlHub() {
               key={sub.to}
               to={sub.to}
               className={cn(
-                "flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-bold transition-all",
+                "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-bold transition-all",
                 active
                   ? "border-[#E05600] bg-[#E05600] text-white shadow-sm"
-                  : "border-[#E2E8F0] bg-[#FFFFFF] text-[#475569] hover:border-[#CBD5E1] hover:bg-[#F1F5F9] hover:text-[#0F172A]",
+                  : "border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B] hover:border-[#E05600] hover:bg-[#FFF7ED] hover:text-[#E05600]",
               )}
             >
-              <SubIcon className={cn("size-3.5", active ? "text-white" : "text-[#475569]")} />
+              <SubIcon className="size-3.5" />
               <span>{sub.label}</span>
             </Link>
           );

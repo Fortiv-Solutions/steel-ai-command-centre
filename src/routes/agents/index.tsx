@@ -51,7 +51,7 @@ function AgentsPage() {
   return (
     <div className="space-y-5">
       {/* Top Main Section Header matching screenshot */}
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5 shadow-sm">
+      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 shadow-sm">
         {/* Breadcrumb */}
         <div className="mb-2 flex items-center gap-1.5 text-[11px] font-bold text-[#64748B]">
           <span>Command Center</span>
@@ -98,7 +98,7 @@ function AgentsPage() {
               className={`rounded-full px-3 py-1 text-xs font-bold transition-all ${
                 f === statusFilter
                   ? "bg-[#0F172A] text-white shadow-sm"
-                  : "bg-[#FFFFFF] text-[#475569] border border-[#E2E8F0] hover:bg-[#F1F5F9] hover:text-[#0F172A]"
+                  : "bg-[#FFFFFF] text-[#475569] border border-[#E2E8F0] hover:bg-[#FFFFFF] hover:text-[#0F172A]"
               }`}
             >
               {f}
@@ -138,12 +138,12 @@ function AgentsPage() {
 
           return (
             <Link key={a.slug} to="/agents/$slug" params={{ slug: a.slug }}>
-              <div className="flex h-full flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 transition-all hover:border-[#E05600] hover:shadow-md">
+              <div className="flex h-full flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 transition-all hover:border-[#E05600] hover:shadow-md">
                 <div>
                   {/* Card Top Row */}
                   <div className="flex items-start justify-between gap-2.5">
                     <div className="flex items-start gap-2.5 min-w-0">
-                      <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-[#F1F5F9] text-[#0F172A] border border-[#E2E8F0]">
+                      <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-[#FFFFFF] text-[#0F172A] border border-[#E2E8F0]">
                         <Bot className="size-4 text-[#E05600]" />
                       </div>
                       <div className="min-w-0 flex-1">
@@ -157,7 +157,7 @@ function AgentsPage() {
                   </div>
 
                   {/* Metrics Box */}
-                  <div className="my-3 grid grid-cols-3 gap-1 rounded-lg bg-[#F1F5F9] p-2 text-center border border-[#E2E8F0]">
+                  <div className="my-3 grid grid-cols-3 gap-1 rounded-lg bg-[#FFFFFF] p-2 text-center border border-[#E2E8F0]">
                     <div>
                       <p className="text-[9px] font-bold uppercase tracking-wider text-[#64748B]">
                         RUNS

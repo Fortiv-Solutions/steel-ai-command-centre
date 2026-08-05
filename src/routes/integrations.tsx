@@ -53,7 +53,7 @@ function Page() {
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {connectors.map((c) => (
-          <div key={c.name} className="flex flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 transition-colors hover:border-[#CBD5E1]">
+          <div key={c.name} className="flex flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 transition-colors hover:border-[#CBD5E1]">
             <div>
               <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
                 <div className="flex items-center gap-2">
@@ -68,7 +68,7 @@ function Page() {
                 <Pill tone="success">{c.status}</Pill>
               </div>
 
-              <div className="my-3 grid grid-cols-2 gap-2 rounded-lg bg-[#F1F5F9] p-2 text-center border border-[#E2E8F0]">
+              <div className="my-3 grid grid-cols-2 gap-2 rounded-lg bg-[#FFFFFF] p-2 text-center border border-[#E2E8F0]">
                 <div>
                   <p className="text-[10px] font-semibold text-[#475569]">Sync Rate</p>
                   <p className="text-xs font-bold text-[#0F172A]">{c.syncRate}</p>

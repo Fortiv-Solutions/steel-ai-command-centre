@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Configured Steel Grades & Chemical/Mechanical Tolerances" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Grade Code</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Category</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Yield Strength</TableHead>
@@ -63,7 +63,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {steelGrades.map((g) => (
-              <TableRow key={g.code} className="hover:bg-[#F1F5F9]">
+              <TableRow key={g.code} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{g.code}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{g.category}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{g.yieldMPa}</TableCell>

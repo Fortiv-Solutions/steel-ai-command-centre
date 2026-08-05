@@ -51,7 +51,7 @@ function Page() {
       <Panel title="Configured AI Safety Policies & Guardrail Enforcement Rules" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Rule ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Governance Policy</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Module Scope</TableHead>
@@ -62,7 +62,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {governanceRules.map((g) => (
-              <TableRow key={g.ruleId} className="hover:bg-[#F1F5F9]">
+              <TableRow key={g.ruleId} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{g.ruleId}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{g.policy}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{g.scope}</TableCell>

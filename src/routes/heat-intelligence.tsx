@@ -53,7 +53,7 @@ function Page() {
       <Panel title="EAF Melt Shop Heat Log & Chemical Composition" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Heat ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Furnace Unit</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Target Steel Grade</TableHead>
@@ -66,7 +66,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {heatLogsData.map((h) => (
-              <TableRow key={h.id} className="hover:bg-[#F1F5F9]">
+              <TableRow key={h.id} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{h.id}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{h.furnace}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{h.grade}</TableCell>

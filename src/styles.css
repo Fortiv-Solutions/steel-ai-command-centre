@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Steel AI OS — White Enterprise Executive Theme
- * Primary White (#FFFFFF) background with crisp slate surfaces & refined executive terracotta orange (#E05600) accent.
+ * Steel AI OS — Ultra White & Orange Theme
+ * Pure White (#FFFFFF) cards & background with crisp borders & orange (#E05600) accents.
  */
 
 @theme inline {
@@ -73,59 +73,58 @@
 :root {
   --radius: 12px;
 
-  /* Executive Primary White Background */
+  /* Ultra Clean Pure White Background & Surfaces */
   --background: #FFFFFF;
   --foreground: #0F172A;
 
-  /* Executive Slate Surfaces */
-  --surface: #F8FAFC;
+  --surface: #FFFFFF;
   --surface-foreground: #0F172A;
-  --elevated: #F1F5F9;
-  --card: #F8FAFC;
+  --elevated: #FFFFFF;
+  --card: #FFFFFF;
   --card-foreground: #0F172A;
   --popover: #FFFFFF;
   --popover-foreground: #0F172A;
 
-  /* Primary Accents — Refined Executive Orange */
-  --primary: #E05600; /* Refined Terracotta Orange */
+  /* Primary Accents — Vibrant Orange */
+  --primary: #E05600;
   --primary-foreground: #FFFFFF;
-  --secondary: #F1F5F9; /* Slate Plate */
-  --secondary-foreground: #0F172A;
-  --muted: #F1F5F9;
-  --muted-foreground: #475569; /* Graphite Secondary */
-  --accent: #9E521D; /* Industrial Copper */
+  --secondary: #FFF7ED;
+  --secondary-foreground: #E05600;
+  --muted: #FFFFFF;
+  --muted-foreground: #64748B;
+  --accent: #E05600;
   --accent-foreground: #FFFFFF;
 
-  /* Status Colors — Strictly No Green or Blue */
-  --destructive: #9B3227; /* Brick Red */
+  /* Status Colors */
+  --destructive: #9B3227;
   --destructive-foreground: #FFFFFF;
-  --success: #B87514; /* Warm Gold / Amber */
+  --success: #B87514;
   --success-foreground: #FFFFFF;
-  --warning: #B8561B; /* Burnt Orange */
+  --warning: #B8561B;
   --warning-foreground: #FFFFFF;
-  --info: #64748B; /* Steel Slate */
+  --info: #64748B;
   --info-foreground: #FFFFFF;
 
-  /* Crisp Metallic Borders & Inputs */
+  /* Crisp Light Borders & Inputs */
   --border: #E2E8F0;
   --input: #E2E8F0;
   --ring: #E05600;
-  --hover: #F1F5F9;
+  --hover: #FFF7ED;
 
   /* Charts */
-  --chart-1: #E05600; /* Refined Terracotta Orange */
-  --chart-2: #9E521D; /* Copper */
-  --chart-3: #64748B; /* Steel Slate */
-  --chart-4: #B87514; /* Amber */
-  --chart-5: #B8561B; /* Burnt Orange */
+  --chart-1: #E05600;
+  --chart-2: #9E521D;
+  --chart-3: #64748B;
+  --chart-4: #B87514;
+  --chart-5: #B8561B;
 
-  /* Sidebar */
-  --sidebar: #F8FAFC;
+  /* Pure White Sidebar */
+  --sidebar: #FFFFFF;
   --sidebar-foreground: #0F172A;
   --sidebar-primary: #E05600;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F1F5F9;
-  --sidebar-accent-foreground: #0F172A;
+  --sidebar-accent: #FFF7ED;
+  --sidebar-accent-foreground: #E05600;
   --sidebar-border: #E2E8F0;
   --sidebar-ring: #E05600;
 }
@@ -168,15 +167,15 @@
   }
 }
 
-/* White Theme Cards & Panels */
+/* Pure White Cards & Panels */
 @utility industrial-card {
-  background-color: #F8FAFC;
+  background-color: #FFFFFF;
   border: 1px solid #E2E8F0;
   border-radius: 12px;
 }
 
 @utility glass-panel {
-  background-color: #F8FAFC;
+  background-color: #FFFFFF;
   border: 1px solid #E2E8F0;
   border-radius: 12px;
 }

@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Stockyard Bay Locations & Raw Material Buffers" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Bay / Yard Location</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Category</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Current Tonnage</TableHead>
@@ -63,7 +63,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {inventoryStockData.map((inv) => (
-              <TableRow key={inv.location} className="hover:bg-[#F1F5F9]">
+              <TableRow key={inv.location} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-bold text-xs text-[#E05600]">{inv.location}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{inv.category}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{inv.tonnage}</TableCell>

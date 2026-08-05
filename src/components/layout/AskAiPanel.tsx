@@ -53,7 +53,7 @@ export function AskAiPanel({
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent className="flex w-full flex-col gap-0 border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] p-0 sm:max-w-xl">
-        <SheetHeader className="border-b border-[#E2E8F0] bg-[#F8FAFC] p-5">
+        <SheetHeader className="border-b border-[#E2E8F0] bg-[#FFFFFF] p-5">
           <SheetTitle className="flex items-center gap-2 font-display text-[#0F172A]">
             <span className="grid size-7 place-items-center rounded-md bg-[#E05600]">
               <Sparkles className="size-4 text-white" />
@@ -75,7 +75,7 @@ export function AskAiPanel({
                 <button
                   key={s}
                   onClick={() => send(s)}
-                  className="w-full rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3 text-left text-xs font-bold text-[#0F172A] transition-colors hover:border-[#E05600] hover:bg-[#FFF7ED]"
+                  className="w-full rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-3 text-left text-xs font-bold text-[#0F172A] transition-colors hover:border-[#E05600] hover:bg-[#FFF7ED]"
                 >
                   {s}
                 </button>
@@ -89,7 +89,7 @@ export function AskAiPanel({
               className={
                 m.role === "user"
                   ? "ml-auto max-w-[85%] rounded-lg bg-[#FFF7ED] border border-[#FDBA74] p-3 text-xs font-bold text-[#0F172A]"
-                  : "max-w-[95%] space-y-3 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] p-3 text-xs leading-relaxed font-semibold text-[#0F172A]"
+                  : "max-w-[95%] space-y-3 rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-3 text-xs leading-relaxed font-semibold text-[#0F172A]"
               }
             >
               <p>{m.text}</p>
@@ -106,7 +106,7 @@ export function AskAiPanel({
           ))}
         </div>
 
-        <div className="flex items-center gap-2 border-t border-[#E2E8F0] bg-[#F8FAFC] p-4">
+        <div className="flex items-center gap-2 border-t border-[#E2E8F0] bg-[#FFFFFF] p-4">
           <Input
             value={value}
             onChange={(e) => setValue(e.target.value)}

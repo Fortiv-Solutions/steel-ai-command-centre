@@ -51,7 +51,7 @@ function Page() {
       <Panel title="Real-Time Enterprise Security & Access Audit Trail" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Log ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Security Event</TableHead>
               <TableHead className="font-bold text-[#0F172A]">User Principal</TableHead>
@@ -63,7 +63,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {securityAuditLogs.map((l) => (
-              <TableRow key={l.id} className="hover:bg-[#F1F5F9]">
+              <TableRow key={l.id} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{l.id}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{l.event}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{l.user}</TableCell>

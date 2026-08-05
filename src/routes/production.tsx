@@ -51,7 +51,7 @@ function Page() {
       <Panel title="Active Production Campaign Schedules & Shift Work Orders" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Document No</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Mill / Unit</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Target Tonnage</TableHead>
@@ -62,7 +62,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {productionSchedules.map((p) => (
-              <TableRow key={p.docNo} className="hover:bg-[#F1F5F9]">
+              <TableRow key={p.docNo} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{p.docNo}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{p.mill}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{p.targetTonnage}</TableCell>

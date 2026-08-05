@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Configured Plant SOPs & Metallurgical Operating Manuals" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">SOP Code</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Procedure Title</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Department</TableHead>
@@ -63,7 +63,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {sopsData.map((s) => (
-              <TableRow key={s.code} className="hover:bg-[#F1F5F9]">
+              <TableRow key={s.code} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{s.code}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{s.title}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{s.dept}</TableCell>

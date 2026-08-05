@@ -51,7 +51,7 @@ function Page() {
       <Panel title="Active Dispatch Railway Rakes & Export Convoys" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Rake / Fleet ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Destination Terminal</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Wagon Count</TableHead>
@@ -62,7 +62,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {logisticsDispatchData.map((log) => (
-              <TableRow key={log.rakeId} className="hover:bg-[#F1F5F9]">
+              <TableRow key={log.rakeId} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{log.rakeId}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{log.destination}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{log.wagons}</TableCell>

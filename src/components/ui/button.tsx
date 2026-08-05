@@ -10,9 +10,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-[#E05600] text-white hover:bg-[#C84600] active:bg-[#A63800] shadow-sm", // Refined Terracotta Orange
-        secondary: "bg-[#F1F5F9] text-[#0F172A] border border-[#E2E8F0] hover:bg-[#E2E8F0]", // Slate Plate
-        outline: "border border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] hover:bg-[#F1F5F9]",
-        ghost: "text-[#0F172A] hover:bg-[#F1F5F9]",
+        secondary: "bg-[#FFFFFF] text-[#0F172A] border border-[#E2E8F0] hover:bg-[#E2E8F0]", // Slate Plate
+        outline: "border border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] hover:bg-[#FFFFFF]",
+        ghost: "text-[#0F172A] hover:bg-[#FFFFFF]",
         destructive: "bg-[#9B3227] text-white hover:bg-[#80271E]",
         link: "text-[#E05600] underline-offset-4 hover:underline",
       },

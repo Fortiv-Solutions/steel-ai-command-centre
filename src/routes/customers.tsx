@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Customer Order Backlog & Credit Limit Utilization" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Customer Entity</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Steel Grade Ordered</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Order Tonnage</TableHead>
@@ -64,7 +64,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {customerOrders.map((c) => (
-              <TableRow key={c.customer} className="hover:bg-[#F1F5F9]">
+              <TableRow key={c.customer} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-bold text-xs text-[#0F172A]">{c.customer}</TableCell>
                 <TableCell className="text-xs font-bold text-[#E05600]">{c.grade}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{c.quantity}</TableCell>

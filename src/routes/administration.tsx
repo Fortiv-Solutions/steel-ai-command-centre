@@ -80,7 +80,7 @@ function Page() {
         <StatCard label="Roles Configured" value="48 Roles" hint="RBAC matrix" icon={Shield} />
       </div>
 
-      <div className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3">
+      <div className="flex items-center justify-between gap-3 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-3">
         <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">Configured Enterprise Users</h2>
         <div className="relative w-72">
           <Search className="pointer-events-none absolute left-2.5 top-2.5 size-3.5 text-[#64748B]" />
@@ -93,10 +93,10 @@ function Page() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
+      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF]">
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">User ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Full Name</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Enterprise Role</TableHead>
@@ -107,7 +107,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {filtered.map((u) => (
-              <TableRow key={u.id} className="hover:bg-[#F1F5F9]">
+              <TableRow key={u.id} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{u.id}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">
                   {u.name}

@@ -51,7 +51,7 @@ function Page() {
       <Panel title="Live Plant Risk Flags & Predictive Hazard Mitigations" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Risk ID</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Plant Facility / Area</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Hazard Parameter</TableHead>
@@ -62,7 +62,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {plantRiskLogs.map((r) => (
-              <TableRow key={r.riskId} className="hover:bg-[#F1F5F9]">
+              <TableRow key={r.riskId} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-mono text-xs font-bold text-[#E05600]">{r.riskId}</TableCell>
                 <TableCell className="text-xs font-bold text-[#0F172A]">{r.area}</TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{r.hazardType}</TableCell>

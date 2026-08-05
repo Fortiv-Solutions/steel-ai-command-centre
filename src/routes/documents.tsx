@@ -52,7 +52,7 @@ function Page() {
       <Panel title="Active Document Intelligence Parsers & Extraction Performance" bare>
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#F1F5F9]">
+            <TableRow className="bg-[#FFFFFF]">
               <TableHead className="font-bold text-[#0F172A]">Document Category</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Processed Volume</TableHead>
               <TableHead className="font-bold text-[#0F172A]">Extraction Accuracy</TableHead>
@@ -63,7 +63,7 @@ function Page() {
           </TableHeader>
           <TableBody>
             {docCategories.map((d) => (
-              <TableRow key={d.docType} className="hover:bg-[#F1F5F9]">
+              <TableRow key={d.docType} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-bold text-xs text-[#0F172A]">{d.docType}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{d.count.toLocaleString()}</TableCell>
                 <TableCell className="text-xs font-bold text-[#E05600]">{d.accuracy}</TableCell>
