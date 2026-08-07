@@ -21,9 +21,9 @@
  */
 
 @theme inline {
-  --font-display: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "SF Mono", "Cascadia Code", "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Realtime Text", "Space Grotesk", "Syne", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Realtime Text", "Plus Jakarta Sans", "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Realtime Text Mono", "Space Mono", "JetBrains Mono", ui-monospace, monospace;
 
   --radius-sm: 8px;
   --radius-md: 12px;
