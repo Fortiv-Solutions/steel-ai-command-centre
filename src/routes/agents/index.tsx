@@ -1,6 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Bot, ChevronRight, Filter, Plus, Search, Sparkles } from "lucide-react";
+import {
+  Bot,
+  ChevronRight,
+  Filter,
+  Plus,
+  Search,
+  Sparkles,
+  Zap,
+  Plug,
+  Clock,
+  ShieldCheck,
+  CheckCircle2,
+  Building2,
+  Wallet,
+  Scale,
+  Users,
+  Factory,
+  Flame,
+  ArrowRight,
+} from "lucide-react";
 import { Pill, Meter, statusTone } from "@/components/ui-kit";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -9,16 +28,16 @@ import { agents } from "@/lib/data";
 export const Route = createFileRoute("/agents/")({
   head: () => ({
     meta: [
-      { title: "AI Agents Center · Steel AI Command Center" },
+      { title: "AI Agent Showcase & Marketplace · Fortiv Solutions Steel AI" },
       {
         name: "description",
         content:
-          "Enterprise marketplace of 63 Production AI agents across commercial, procurement, quality, finance, HR and plant functions.",
+          "Enterprise catalog of 58 Production AI agents across Sales, Procurement, Quality, EAF Metallurgy, Finance, HR and Plant Logistics.",
       },
-      { property: "og:title", content: "AI Agents Center · Steel AI Command Center" },
+      { property: "og:title", content: "AI Agent Showcase & Marketplace · Fortiv Solutions Steel AI" },
       {
         property: "og:description",
-        content: "Deploy, govern and monitor AI agents with prompt registry, memory, knowledge bindings, cost and performance.",
+        content: "Deploy, govern and monitor autonomous AI agents with prompt registry, memory, RAG knowledge bindings, and ERP connectors.",
       },
     ],
   }),
@@ -27,7 +46,12 @@ export const Route = createFileRoute("/agents/")({
 
 const filterStatuses = ["All", "Running", "Idle", "Paused", "Draft"];
 
-const modelsList = ["GPT-5.5", "Claude Sonnet 4.6", "Gemini 3.6 Flash", "Azure OpenAI o5"];
+const connectedSystemsMap: Record<string, string[]> = {
+  active: ["SAP S/4HANA", "Spectro LIMS", "Company Brain RAG"],
+  paused: ["Salesforce CRM", "Microsoft 365", "ERP Finance"],
+  error: ["SCADA / PLC", "Railway Rake System", "SAP MM"],
+  draft: ["SharePoint", "PostgreSQL", "REST API"],
+};
 
 function AgentsPage() {
   const [q, setQ] = useState("");
@@ -42,6 +66,7 @@ function AgentsPage() {
           (statusFilter === "Idle" && a.status === "paused") ||
           (statusFilter === "Paused" && a.status === "error") ||
           (statusFilter === "Draft" && a.status === "draft");
+
         const qMatch = (a.name + a.department + a.model).toLowerCase().includes(q.toLowerCase());
         return sMatch && qMatch;
       }),
@@ -49,56 +74,80 @@ function AgentsPage() {
   );
 
   return (
-    <div className="space-y-5">
-      {/* Top Main Section Header matching screenshot */}
-      <div className="rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-5 shadow-sm">
-        {/* Breadcrumb */}
-        <div className="mb-2 flex items-center gap-1.5 text-[11px] font-bold text-[#64748B]">
-          <span>Command Center</span>
-          <ChevronRight className="size-3 text-[#94A3B8]" />
-          <span>AI Workspace</span>
-          <ChevronRight className="size-3 text-[#94A3B8]" />
-          <span className="text-[#E05600]">AI Agents</span>
-        </div>
-
-        <div className="flex flex-wrap items-start justify-between gap-4 border-b border-[#E2E8F0] pb-4">
-          <div>
+    <div className="space-y-6">
+      {/* Top Showcase Banner - Royal Sapphire & Electric Blue Theme */}
+      <div className="rounded-[32px] border border-[#2563EB]/20 bg-gradient-to-r from-[#0F172A] via-[#1E3A8A] to-[#1E40AF] p-8 text-white shadow-xl">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="space-y-2 max-w-3xl">
             <div className="flex items-center gap-2">
-              <span className="rounded-md bg-[#FFF7ED] px-2 py-0.5 text-[10px] font-extrabold uppercase text-[#E05600] border border-[#FDBA74]">
-                AI WORKSPACE
+              <span className="rounded-full bg-white/10 border border-white/20 px-3.5 py-0.5 text-[10px] font-extrabold uppercase text-[#60A5FA]">
+                ENTERPRISE AI AGENT GALLERY
               </span>
+              <span className="text-xs text-slate-200 font-bold">• 58 Production Agents Live</span>
             </div>
-            <h1 className="mt-1 text-2xl font-bold tracking-tight text-[#0F172A] lg:text-3xl">
-              63 Production AI Agents
+            <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl text-white">
+              Autonomous Steel Enterprise AI Agents
             </h1>
-            <p className="mt-1 max-w-3xl text-xs font-medium leading-relaxed text-[#475569]">
-              Every agent is versioned, permissioned, and monitored — with prompt registry, memory, knowledge bindings, connected systems, cost and execution logs.
+            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+              Every agent is pre-trained on steel manufacturing domain knowledge, permission-aware, and connected to your SAP ERP, SCADA, and LIMS systems. Software-only deployment with zero hardware.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <Button size="sm" variant="outline">
-              <Sparkles className="size-3.5" /> AI Assistant
-            </Button>
-            <Button size="sm">
-              <Plus className="size-3.5" /> Provision New Agent
+          <div className="flex flex-wrap gap-2">
+            <Button size="sm" className="bg-[#2563EB] text-white hover:bg-[#1D4ED8] font-extrabold rounded-full shadow-md">
+              <Plus className="size-3.5" /> Deploy Custom Agent
             </Button>
           </div>
         </div>
 
-        {/* Filters Row */}
-        <div className="mt-4 flex flex-wrap items-center gap-2">
-          <span className="flex items-center gap-1 text-xs font-bold text-[#475569]">
-            <Filter className="size-3.5 text-[#64748B]" /> Filters:
+        {/* Quick Agent Stats */}
+        <div className="mt-6 grid grid-cols-2 gap-4 border-t border-white/15 pt-4 sm:grid-cols-4">
+          <div>
+            <p className="text-[10px] font-extrabold text-slate-300 uppercase">Active Production Agents</p>
+            <p className="text-xl font-extrabold text-white">58 Live Agents</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-extrabold text-slate-300 uppercase">Monthly Executions</p>
+            <p className="text-xl font-extrabold text-[#60A5FA]">1,420,000 / mo</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-extrabold text-slate-300 uppercase">Grounded Accuracy</p>
+            <p className="text-xl font-extrabold text-emerald-300">99.8% Zero Hallucination</p>
+          </div>
+          <div>
+            <p className="text-[10px] font-extrabold text-slate-300 uppercase">Human Sign-off Policy</p>
+            <p className="text-xl font-extrabold text-white">SOC 2 Enforced</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Search & Filter Bar */}
+      <div className="rounded-[28px] border border-[#E2E8F0] bg-[#FFFFFF] p-5 shadow-sm space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="relative min-w-[280px] flex-1 max-w-md">
+            <Search className="pointer-events-none absolute left-3.5 top-3 size-4 text-[#64748B]" />
+            <Input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search 58 agents by function, purpose or connected system…"
+              className="h-10 bg-[#F8FAFC] border-[#E2E8F0] pl-10 text-xs text-[#0F172A] focus:border-[#2563EB] rounded-full"
+            />
+          </div>
+          <span className="text-xs font-bold text-[#64748B]">
+            Showing <strong className="text-[#2563EB]">{list.length}</strong> of 58 agents
           </span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2 border-t border-[#E2E8F0] pt-3">
+          <span className="text-xs font-extrabold text-[#2563EB] mr-1">Status:</span>
           {filterStatuses.map((f) => (
             <button
               key={f}
               onClick={() => setStatusFilter(f)}
-              className={`rounded-full px-3 py-1 text-xs font-bold transition-all ${
+              className={`rounded-full px-3.5 py-1 text-xs font-extrabold transition-all ${
                 f === statusFilter
-                  ? "bg-[#0F172A] text-white shadow-sm"
-                  : "bg-[#FFFFFF] text-[#475569] border border-[#E2E8F0] hover:bg-[#FFFFFF] hover:text-[#0F172A]"
+                  ? "bg-[#2563EB] text-white shadow-sm"
+                  : "bg-[#F8FAFC] text-[#475569] border border-[#E2E8F0] hover:border-[#2563EB] hover:text-[#2563EB]"
               }`}
             >
               {f}
@@ -107,26 +156,9 @@ function AgentsPage() {
         </div>
       </div>
 
-      {/* Search & Count Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="relative min-w-[280px] flex-1 max-w-md">
-          <Search className="pointer-events-none absolute left-3 top-2.5 size-4 text-[#64748B]" />
-          <Input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Search 63 agents by name or department function…"
-            className="h-9 bg-[#FFFFFF] border-[#E2E8F0] pl-9 text-xs text-[#0F172A] focus:border-[#E05600]"
-          />
-        </div>
-        <span className="text-xs font-bold text-[#64748B]">
-          Showing <strong className="text-[#0F172A]">{list.length}</strong> of 63 agents
-        </span>
-      </div>
-
-      {/* 4-Column Grid of AI Agent Cards */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {list.map((a, idx) => {
-          const modelName = modelsList[idx % modelsList.length];
+      {/* 3-Column Enterprise AI Agent Cards Grid */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {list.map((a) => {
           const displayStatus =
             a.status === "active"
               ? "Running"
@@ -136,67 +168,80 @@ function AgentsPage() {
                   ? "Paused"
                   : "Draft";
 
+          const systems = connectedSystemsMap[a.status] || ["SAP S/4HANA", "Company Brain RAG"];
+
           return (
-            <Link key={a.slug} to="/agents/$slug" params={{ slug: a.slug }}>
-              <div className="flex h-full flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 transition-all hover:border-[#E05600] hover:shadow-md">
-                <div>
-                  {/* Card Top Row */}
-                  <div className="flex items-start justify-between gap-2.5">
-                    <div className="flex items-start gap-2.5 min-w-0">
-                      <div className="grid size-9 shrink-0 place-items-center rounded-lg bg-[#FFFFFF] text-[#0F172A] border border-[#E2E8F0]">
-                        <Bot className="size-4 text-[#E05600]" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="truncate text-xs font-bold text-[#0F172A]">{a.name}</p>
-                        <p className="truncate text-[10px] font-semibold text-[#64748B]">
-                          {a.department}
-                        </p>
-                      </div>
-                    </div>
-                    <Pill tone={statusTone(a.status)}>{displayStatus}</Pill>
-                  </div>
-
-                  {/* Metrics Box */}
-                  <div className="my-3 grid grid-cols-3 gap-1 rounded-lg bg-[#FFFFFF] p-2 text-center border border-[#E2E8F0]">
-                    <div>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-[#64748B]">
-                        RUNS
-                      </p>
-                      <p className="text-xs font-bold text-[#0F172A]">{a.runs.toLocaleString()}</p>
+            <div
+              key={a.slug}
+              className="flex h-full flex-col justify-between rounded-[28px] border border-[#E2E8F0] bg-[#FFFFFF] p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-[#2563EB]"
+            >
+              <div className="space-y-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="grid size-11 shrink-0 place-items-center rounded-full bg-[#EFF6FF] text-[#2563EB]">
+                      <Bot className="size-5 text-[#2563EB]" />
                     </div>
                     <div>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-[#64748B]">
-                        ACCURACY
-                      </p>
-                      <p className="text-xs font-bold text-[#E05600]">{a.accuracy}%</p>
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-[#64748B]">
-                        COST / MO
-                      </p>
-                      <p className="text-xs font-bold text-[#0F172A]">${a.monthlyCost}</p>
+                      <h3 className="text-xs font-extrabold text-[#0F172A] leading-snug">{a.name}</h3>
+                      <p className="text-[11px] font-bold text-[#2563EB]">{a.department}</p>
                     </div>
                   </div>
+                  <Pill tone={statusTone(a.status)}>{displayStatus}</Pill>
+                </div>
 
-                  {/* Health Index */}
-                  <div className="mb-3">
-                    <div className="mb-1 flex items-center justify-between text-[10px]">
-                      <span className="font-semibold text-[#64748B]">Health Index</span>
-                      <span className="font-bold text-[#B87514]">{82 + (idx % 16)}%</span>
-                    </div>
-                    <Meter value={82 + (idx % 16)} tone="success" />
+                <p className="text-xs text-[#64748B] leading-relaxed font-medium line-clamp-2">
+                  Automates {a.department.toLowerCase()} workflows with grounded RAG retrieval, policy validation, and audit trail.
+                </p>
+
+                <div className="flex items-center justify-between rounded-2xl bg-[#F8FAFC] p-3 border border-[#E2E8F0] text-xs">
+                  <div>
+                    <p className="text-[9px] font-extrabold uppercase text-[#64748B]">
+                      EST. SAVINGS / MO
+                    </p>
+                    <p className="text-xs font-extrabold text-[#059669]">
+                      ₹{(a.monthlyCost * 120).toLocaleString()}
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-[9px] font-extrabold uppercase text-[#64748B]">
+                      ACCURACY
+                    </p>
+                    <p className="text-xs font-extrabold text-[#2563EB]">{a.accuracy}%</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[9px] font-extrabold uppercase text-[#64748B]">
+                      RUNS / MO
+                    </p>
+                    <p className="text-xs font-extrabold text-[#0F172A]">{a.runs.toLocaleString()}</p>
                   </div>
                 </div>
 
-                {/* Footer Model & Latency */}
-                <div className="flex items-center justify-between border-t border-[#E2E8F0] pt-2 text-[10px]">
-                  <span className="font-bold text-[#0F172A]">{modelName}</span>
-                  <span className="font-mono text-[#64748B]">
-                    {(0.6 + (idx % 8) * 0.4).toFixed(1)}s p95
-                  </span>
+                <div>
+                  <p className="text-[10px] font-extrabold uppercase text-[#64748B] mb-2 flex items-center gap-1">
+                    <Plug className="size-3 text-[#2563EB]" /> Connected Enterprise Systems:
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {systems.map((s) => (
+                      <span key={s} className="rounded-full border border-[#E2E8F0] bg-[#FFFFFF] px-3 py-0.5 text-[10px] font-bold text-[#475569]">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </Link>
+
+              <div className="mt-6 flex items-center justify-between border-t border-[#E2E8F0] pt-4">
+                <span className="text-[10px] font-bold text-[#64748B]">
+                  Model: <strong className="text-[#0F172A]">{a.model}</strong>
+                </span>
+                <Button asChild size="sm" variant="outline" className="h-8 rounded-full border-[#2563EB]/30 text-[#2563EB] hover:bg-[#EFF6FF] text-xs font-bold">
+                  <Link to="/agents/$slug" params={{ slug: a.slug }}>
+                    <span>Inspect Agent</span>
+                    <ArrowRight className="size-3" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
           );
         })}
       </div>

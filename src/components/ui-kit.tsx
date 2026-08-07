@@ -14,16 +14,16 @@ export function PageHeader({
   actions?: ReactNode;
 }) {
   return (
-    <div className="mb-5 flex flex-wrap items-end justify-between gap-4 border-b border-[#E2E8F0] pb-4">
+    <div className="mb-6 flex flex-wrap items-end justify-between gap-4 border-b border-[#E2E8F0] pb-5">
       <div className="min-w-0">
         {eyebrow && (
-          <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-[#E05600]">
+          <p className="mb-1 text-[10px] font-extrabold uppercase tracking-widest text-[#2563EB]">
             {eyebrow}
           </p>
         )}
-        <h1 className="text-xl font-bold tracking-tight text-[#0F172A] lg:text-2xl">{title}</h1>
+        <h1 className="text-2xl font-extrabold tracking-tight text-[#0F172A] lg:text-3xl">{title}</h1>
         {description && (
-          <p className="mt-1 max-w-3xl text-xs text-[#64748B]">{description}</p>
+          <p className="mt-1.5 max-w-3xl text-xs font-medium text-[#64748B] leading-relaxed">{description}</p>
         )}
       </div>
       {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
@@ -48,20 +48,20 @@ export function Panel({
 }) {
   return (
     <section
-      className={cn("rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] shadow-sm", className)}
+      className={cn("rounded-[28px] border border-[#E2E8F0] bg-[#FFFFFF] text-[#0F172A] shadow-sm transition-all duration-200", className)}
     >
       {(title || actions) && (
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E2E8F0] px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E2E8F0] px-6 py-4">
           <div className="min-w-0">
-            {title && <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">{title}</h2>}
+            {title && <h2 className="text-xs font-extrabold uppercase tracking-wider text-[#0F172A]">{title}</h2>}
             {description && (
-              <p className="mt-0.5 text-[11px] text-[#64748B]">{description}</p>
+              <p className="mt-0.5 text-[11px] font-medium text-[#64748B]">{description}</p>
             )}
           </div>
           {actions}
         </div>
       )}
-      <div className={bare ? "" : "p-4"}>{children}</div>
+      <div className={bare ? "" : "p-6"}>{children}</div>
     </section>
   );
 }
@@ -81,21 +81,26 @@ export function StatCard({
 }) {
   const up = (delta ?? 0) >= 0;
   return (
-    <div className="flex h-[88px] flex-col justify-between rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-3.5 shadow-sm transition-colors hover:border-[#E05600]">
+    <div className="flex flex-col justify-between rounded-[28px] border border-[#E2E8F0] bg-[#FFFFFF] p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-[#2563EB]">
       <div className="flex items-center justify-between gap-2">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">
+        <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#64748B]">
           {label}
         </p>
-        {Icon && <Icon className="size-3.5 text-[#E05600]" />}
+        {Icon && (
+          <div className="grid size-9 place-items-center rounded-full bg-[#EFF6FF] text-[#2563EB]">
+            <Icon className="size-4.5 text-[#2563EB]" />
+          </div>
+        )}
       </div>
-      <div className="flex items-baseline justify-between gap-2">
-        <p className="text-xl font-bold tabular-nums text-[#0F172A]">{value}</p>
-        <div className="flex items-center gap-1">
+
+      <div className="mt-4 space-y-1">
+        <p className="text-2xl font-extrabold tabular-nums tracking-tight text-[#0F172A] lg:text-3xl">{value}</p>
+        <div className="flex items-center gap-1.5 pt-0.5">
           {delta !== undefined && (
             <span
               className={cn(
-                "inline-flex items-center text-[10px] font-bold tabular-nums",
-                up ? "text-[#B87514]" : "text-[#9B3227]",
+                "inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-[10px] font-bold tabular-nums",
+                up ? "bg-[#ECFDF5] text-[#059669]" : "bg-[#FEF2F2] text-[#DC2626]",
               )}
             >
               {up ? <ArrowUpRight className="size-3" /> : <ArrowDownRight className="size-3" />}
@@ -103,7 +108,7 @@ export function StatCard({
               {String(delta).includes(".") ? "%" : ""}
             </span>
           )}
-          {hint && <span className="truncate text-[10px] text-[#64748B]">{hint}</span>}
+          {hint && <span className="truncate text-[10px] font-medium text-[#64748B]">{hint}</span>}
         </div>
       </div>
     </div>
@@ -111,12 +116,12 @@ export function StatCard({
 }
 
 const toneMap = {
-  success: "border-[#B87514]/40 bg-[#FFFBEB] text-[#7B4C05]",
-  warning: "border-[#B8561B]/40 bg-[#FFF7ED] text-[#863A08]",
-  destructive: "border-[#9B3227]/40 bg-[#FEF2F2] text-[#772118]",
-  info: "border-[#64748B]/30 bg-[#FFFFFF] text-[#1E293B]",
-  neutral: "border-[#E2E8F0] bg-[#FFFFFF] text-[#334155]",
-  primary: "border-[#FDBA74] bg-[#FFF7ED] text-[#C2410C]",
+  success: "border-[#059669]/30 bg-[#ECFDF5] text-[#059669]",
+  warning: "border-[#D97706]/30 bg-[#FFFBEB] text-[#B45309]",
+  destructive: "border-[#DC2626]/30 bg-[#FEF2F2] text-[#DC2626]",
+  info: "border-[#0284C7]/30 bg-[#F0F9FF] text-[#0284C7]",
+  neutral: "border-[#E2E8F0] bg-[#F8FAFC] text-[#475569]",
+  primary: "border-[#2563EB]/30 bg-[#EFF6FF] text-[#1D4ED8]",
 } as const;
 
 export type Tone = keyof typeof toneMap;
@@ -133,7 +138,7 @@ export function Pill({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider",
+        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider",
         toneMap[tone],
         className,
       )}
@@ -157,16 +162,16 @@ export function statusTone(status: string): Tone {
 export function Meter({ value, tone = "primary" }: { value: number; tone?: Tone }) {
   const bar =
     tone === "success"
-      ? "bg-[#B87514]"
+      ? "bg-[#059669]"
       : tone === "warning"
-        ? "bg-[#B8561B]"
+        ? "bg-[#D97706]"
         : tone === "destructive"
-          ? "bg-[#9B3227]"
-          : "bg-[#E05600]";
+          ? "bg-[#DC2626]"
+          : "bg-[#2563EB]";
   return (
-    <div className="h-1.5 w-full overflow-hidden rounded bg-[#E2E8F0]">
+    <div className="h-1.5 w-full overflow-hidden rounded-full bg-[#E2E8F0]">
       <div
-        className={cn("h-full rounded transition-all duration-300", bar)}
+        className={cn("h-full rounded-full transition-all duration-300", bar)}
         style={{ width: `${Math.min(100, value)}%` }}
       />
     </div>
@@ -175,7 +180,7 @@ export function Meter({ value, tone = "primary" }: { value: number; tone?: Tone 
 
 export function EmptyHint({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-lg border border-dashed border-[#E2E8F0] p-5 text-center text-xs text-[#64748B]">
+    <div className="rounded-[28px] border border-dashed border-[#E2E8F0] p-6 text-center text-xs text-[#64748B]">
       {children}
     </div>
   );

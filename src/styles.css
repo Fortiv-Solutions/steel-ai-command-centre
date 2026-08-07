@@ -5,8 +5,19 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Steel AI OS — Ultra White & Orange Theme
- * Pure White (#FFFFFF) cards & background with crisp borders & orange (#E05600) accents.
+ * Steel AI Command Center — Ultra-Premium Executive Enterprise SaaS Palette
+ * Derived from Custom Logo & Modern High-End Enterprise Design (Linear/Stripe/Vercel)
+ * Background: #F8FAFC (Clean Crisp Slate Linen)
+ * Cards: #FFFFFF (Pure White)
+ * Primary: #2563EB (Electric Executive Blue)
+ * Primary Deep: #1E3A8A (Royal Sapphire)
+ * Soft Accent Wash: #EFF6FF (Ice Blue Tint)
+ * Primary Text: #0F172A (Deep Slate)
+ * Secondary Text: #64748B (Muted Slate)
+ * Borders: #E2E8F0 (Crisp Light Border)
+ * Success: #059669 (Emerald Green)
+ * Warning: #D97706 (Amber)
+ * Error: #DC2626 (Crimson)
  */
 
 @theme inline {
@@ -14,13 +25,12 @@
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "SF Mono", "Cascadia Code", "JetBrains Mono", ui-monospace, monospace;
 
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 12px;
-  --radius-2xl: 12px;
-  --radius-3xl: 12px;
-  --radius-4xl: 12px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -51,30 +61,19 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-hover: var(--hover);
-  --color-orange: #E05600;
-  --color-copper: #9E521D;
-  --color-silver: #64748B;
 
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: #2563EB;
+  --color-chart-2: #059669;
+  --color-chart-3: #0284C7;
+  --color-chart-4: #D97706;
+  --color-chart-5: #6366F1;
 }
 
 :root {
-  --radius: 12px;
+  --radius: 28px;
 
-  /* Ultra Clean Pure White Background & Surfaces */
-  --background: #FFFFFF;
+  /* Executive Light Background & Surfaces */
+  --background: #F8FAFC;
   --foreground: #0F172A;
 
   --surface: #FFFFFF;
@@ -85,48 +84,31 @@
   --popover: #FFFFFF;
   --popover-foreground: #0F172A;
 
-  /* Primary Accents — Vibrant Orange */
-  --primary: #E05600;
+  /* Premium Executive Color Tokens */
+  --primary: #2563EB;
   --primary-foreground: #FFFFFF;
-  --secondary: #FFF7ED;
-  --secondary-foreground: #E05600;
-  --muted: #FFFFFF;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #1D4ED8;
+  --muted: #F8FAFC;
   --muted-foreground: #64748B;
-  --accent: #E05600;
+  --accent: #3B82F6;
   --accent-foreground: #FFFFFF;
 
   /* Status Colors */
-  --destructive: #9B3227;
+  --destructive: #DC2626;
   --destructive-foreground: #FFFFFF;
-  --success: #B87514;
+  --success: #059669;
   --success-foreground: #FFFFFF;
-  --warning: #B8561B;
+  --warning: #D97706;
   --warning-foreground: #FFFFFF;
-  --info: #64748B;
+  --info: #0284C7;
   --info-foreground: #FFFFFF;
 
-  /* Crisp Light Borders & Inputs */
+  /* Light Crisp Borders & Inputs */
   --border: #E2E8F0;
   --input: #E2E8F0;
-  --ring: #E05600;
-  --hover: #FFF7ED;
-
-  /* Charts */
-  --chart-1: #E05600;
-  --chart-2: #9E521D;
-  --chart-3: #64748B;
-  --chart-4: #B87514;
-  --chart-5: #B8561B;
-
-  /* Pure White Sidebar */
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #0F172A;
-  --sidebar-primary: #E05600;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #FFF7ED;
-  --sidebar-accent-foreground: #E05600;
-  --sidebar-border: #E2E8F0;
-  --sidebar-ring: #E05600;
+  --ring: #2563EB;
+  --hover: #F1F5F9;
 }
 
 @layer base {
@@ -136,7 +118,7 @@
 
   html {
     color-scheme: light;
-    scrollbar-color: #CBD5E1 #FFFFFF;
+    scrollbar-color: #94A3B8 #F8FAFC;
   }
 
   body {
@@ -151,7 +133,7 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.025em;
   }
 
   ::-webkit-scrollbar {
@@ -160,34 +142,36 @@
   }
   ::-webkit-scrollbar-thumb {
     background: #CBD5E1;
-    border-radius: 4px;
+    border-radius: 9999px;
   }
   ::-webkit-scrollbar-track {
-    background: #FFFFFF;
+    background: #F8FAFC;
   }
 }
 
-/* Pure White Cards & Panels */
+/* Premium Executive Card Utilities */
 @utility industrial-card {
   background-color: #FFFFFF;
   border: 1px solid #E2E8F0;
-  border-radius: 12px;
+  border-radius: 28px;
+  box-shadow: 0 4px 20px -4px rgb(0 0 0 / 0.05), 0 2px 6px -1px rgb(0 0 0 / 0.02);
 }
 
 @utility glass-panel {
   background-color: #FFFFFF;
   border: 1px solid #E2E8F0;
-  border-radius: 12px;
+  border-radius: 28px;
+  box-shadow: 0 4px 20px -4px rgb(0 0 0 / 0.05);
 }
 
 @utility molten-text {
-  color: #E05600;
+  color: #2563EB;
 }
 
 @utility molten-bg {
-  background-color: #E05600;
+  background-color: #2563EB;
 }
 
 @utility focus-glow {
-  box-shadow: 0 0 0 1px #E05600;
+  box-shadow: 0 0 0 2px #2563EB;
 }

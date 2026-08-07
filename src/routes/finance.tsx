@@ -66,7 +66,7 @@ function Page() {
               <TableRow key={f.component} className="hover:bg-[#FFFFFF]">
                 <TableCell className="font-bold text-xs text-[#0F172A]">{f.component}</TableCell>
                 <TableCell className="text-xs font-bold tabular-nums text-[#E05600]">{f.costPerTon}</TableCell>
-                <TableCell className="text-xs font-bold text-[#B87514]">{f.budgetVar}</TableCell>
+                <TableCell className="text-xs font-bold text-[#2F4F6F]">{f.budgetVar}</TableCell>
                 <TableCell><Pill tone="success">{f.trend}</Pill></TableCell>
                 <TableCell className="text-xs font-semibold text-[#475569]">{f.aiInsight}</TableCell>
               </TableRow>

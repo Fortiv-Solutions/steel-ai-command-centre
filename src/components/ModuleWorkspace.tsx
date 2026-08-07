@@ -133,12 +133,9 @@ export function ModuleWorkspace({
   const relApprovals = approvals.filter((a) => match(a.department));
   const relWorkflows = workflows.filter((w) => match(w.department));
   const relDepts = departments.filter((d) => match(d.name));
-  const relDocs = docTypes.slice(0, 8);
 
   const tKey = title.toLowerCase();
-  const eKey = eyebrow.toLowerCase();
 
-  // Dynamically generated domain-tailored tabs when customTabs is not explicitly passed
   const domainTabs: CustomTab[] = customTabs || (
     tKey.includes("heat") || tKey.includes("smelt") ? [
       {
@@ -149,7 +146,7 @@ export function ModuleWorkspace({
           <Panel title="EAF Melt Shop Heat Log & Chemical Composition" bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#FFFFFF]">
+                <TableRow className="bg-[#F8FAFC]">
                   <TableHead className="font-bold text-[#0F172A]">Heat ID</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Furnace / Unit</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Steel Grade</TableHead>
@@ -162,15 +159,15 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {heatLogsData.map((h) => (
-                  <TableRow key={h.id} className="hover:bg-[#FFFFFF]">
-                    <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{h.id}</TableCell>
+                  <TableRow key={h.id} className="hover:bg-[#F8FAFC]">
+                    <TableCell className="font-mono text-xs font-bold text-[#0B1F4D]">{h.id}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{h.furnace}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{h.grade}</TableCell>
                     <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{h.temp}</TableCell>
                     <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{h.carbon}</TableCell>
                     <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{h.sulfur}</TableCell>
                     <TableCell><Pill tone={statusTone(h.status)}>{h.status}</Pill></TableCell>
-                    <TableCell className="text-xs font-bold text-[#B87514]">{h.action}</TableCell>
+                    <TableCell className="text-xs font-bold text-[#D97706]">{h.action}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -194,11 +191,11 @@ export function ModuleWorkspace({
           <Panel title="Slag Foaming & Ferro-Alloy Addition Guidance">
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-3 text-xs font-bold text-[#0F172A]">
-                <Flame className="mb-2 size-4 text-[#D95A00]" />
+                <Flame className="mb-2 size-4 text-[#0B1F4D]" />
                 Target Carbon: 0.045% · Current: 0.040% (Add 15kg Injection Carbon)
               </div>
               <div className="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-3 text-xs font-bold text-[#0F172A]">
-                <Sparkles className="mb-2 size-4 text-[#9E521D]" />
+                <Sparkles className="mb-2 size-4 text-[#059669]" />
                 Ferro Silicon 75%: Add 85kg before Tapping
               </div>
             </div>
@@ -215,7 +212,7 @@ export function ModuleWorkspace({
           <Panel title="Verified Mill Test Certificates (Trailing 90 Days)" bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#FFFFFF]">
+                <TableRow className="bg-[#F8FAFC]">
                   <TableHead className="font-bold text-[#0F172A]">Cert No</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Heat #</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Customer</TableHead>
@@ -228,8 +225,8 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {mtcCertificatesData.map((m) => (
-                  <TableRow key={m.certNo} className="hover:bg-[#FFFFFF]">
-                    <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{m.certNo}</TableCell>
+                  <TableRow key={m.certNo} className="hover:bg-[#F8FAFC]">
+                    <TableCell className="font-mono text-xs font-bold text-[#0B1F4D]">{m.certNo}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{m.heat}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{m.customer}</TableCell>
                     <TableCell className="text-xs font-bold text-[#0F172A]">{m.grade}</TableCell>
@@ -243,165 +240,8 @@ export function ModuleWorkspace({
             </Table>
           </Panel>
         )
-      },
-      {
-        id: "lab-tests",
-        label: "Lab Test Specs & Spectro Scans",
-        content: (
-          <Panel title="Automated Chemical Spectrometry & Tensile Test Verification">
-            <BarSeries data={automationTrend} x="month" series={[{ key: "hours", label: "Tests Conducted" }]} height={220} />
-          </Panel>
-        )
       }
     ] :
-    tKey.includes("inventory") || tKey.includes("warehouse") || tKey.includes("materials") ? [
-      {
-        id: "stock",
-        label: "Stockyard Master",
-        badge: "Live Yard",
-        content: (
-          <Panel title="Finished Steel & Raw Scrap Yard Locations" bare>
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-[#FFFFFF]">
-                  <TableHead className="font-bold text-[#0F172A]">Bay / Yard</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Category</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Stock Tonnage</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Grade Specification</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Status</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">AI Logistics Recommendation</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {inventoryStockData.map((inv) => (
-                  <TableRow key={inv.location} className="hover:bg-[#FFFFFF]">
-                    <TableCell className="font-bold text-xs text-[#D95A00]">{inv.location}</TableCell>
-                    <TableCell className="text-xs font-bold text-[#0F172A]">{inv.category}</TableCell>
-                    <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{inv.tonnage}</TableCell>
-                    <TableCell className="text-xs font-bold text-[#0F172A]">{inv.grade}</TableCell>
-                    <TableCell><Pill tone={statusTone(inv.status)}>{inv.status}</Pill></TableCell>
-                    <TableCell className="text-xs font-bold text-[#B87514]">{inv.aiRec}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Panel>
-        )
-      },
-      {
-        id: "scrap-mix",
-        label: "Scrap & Alloy Stock Level",
-        content: (
-          <Panel title="Heavy Melting Scrap & Alloy Inventory Buffer">
-            <LineSeries data={automationTrend} x="month" series={[{ key: "automated", label: "Buffer Tonnage %" }]} height={220} />
-          </Panel>
-        )
-      }
-    ] :
-    tKey.includes("logistics") || tKey.includes("dispatch") || tKey.includes("truck") ? [
-      {
-        id: "dispatch",
-        label: "Railway Rakes & Fleet",
-        badge: "45 Loaded",
-        content: (
-          <Panel title="Active Dispatch Rakes & Export Truck Convoy Status" bare>
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-[#FFFFFF]">
-                  <TableHead className="font-bold text-[#0F172A]">Rake / Fleet ID</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Destination Terminal</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Wagon Count</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Net Tonnage</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Clearance Status</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">ETA</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {logisticsDispatchData.map((log) => (
-                  <TableRow key={log.rakeId} className="hover:bg-[#FFFFFF]">
-                    <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{log.rakeId}</TableCell>
-                    <TableCell className="text-xs font-bold text-[#0F172A]">{log.destination}</TableCell>
-                    <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{log.wagons}</TableCell>
-                    <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{log.netTonnage}</TableCell>
-                    <TableCell><Pill tone={statusTone(log.status)}>{log.status}</Pill></TableCell>
-                    <TableCell className="text-xs font-bold text-[#475569]">{log.eta}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Panel>
-        )
-      }
-    ] :
-    tKey.includes("finance") || tKey.includes("cost") || tKey.includes("capital") ? [
-      {
-        id: "cost-tonne",
-        label: "Cost Per Tonne Breakdown",
-        badge: "₹42,500/MT",
-        content: (
-          <Panel title="Steel Conversion Cost & Liquid Steel Cost Ledger" bare>
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-[#FFFFFF]">
-                  <TableHead className="font-bold text-[#0F172A]">Cost Component</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Cost / Tonne</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Budget Variance</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Trend</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">AI Cost Optimization Insight</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {financeLedgerData.map((f) => (
-                  <TableRow key={f.component} className="hover:bg-[#FFFFFF]">
-                    <TableCell className="font-bold text-xs text-[#0F172A]">{f.component}</TableCell>
-                    <TableCell className="text-xs font-bold tabular-nums text-[#D95A00]">{f.costPerTon}</TableCell>
-                    <TableCell className="text-xs font-bold text-[#B87514]">{f.budgetVar}</TableCell>
-                    <TableCell><Pill tone="success">{f.trend}</Pill></TableCell>
-                    <TableCell className="text-xs font-bold text-[#475569]">{f.aiInsight}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Panel>
-        )
-      }
-    ] :
-    tKey.includes("vendor") || tKey.includes("supplier") || tKey.includes("procurement") ? [
-      {
-        id: "vendor-score",
-        label: "Vendor Scorecard & SLA",
-        badge: "Active",
-        content: (
-          <Panel title="Raw Material Supplier Quality & Delivery SLA Performance" bare>
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-[#FFFFFF]">
-                  <TableHead className="font-bold text-[#0F172A]">Vendor Name</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Category</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Rating</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Delivery SLA</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Quality Pass %</TableHead>
-                  <TableHead className="font-bold text-[#0F172A]">Active Rate Contract</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {vendorPerformanceData.map((v) => (
-                  <TableRow key={v.vendor} className="hover:bg-[#FFFFFF]">
-                    <TableCell className="font-bold text-xs text-[#0F172A]">{v.vendor}</TableCell>
-                    <TableCell className="text-xs font-bold text-[#475569]">{v.category}</TableCell>
-                    <TableCell className="text-xs font-bold tabular-nums text-[#D95A00]">{v.rating} / 5.0</TableCell>
-                    <TableCell className="text-xs font-bold tabular-nums text-[#0F172A]">{v.slaDelivery}</TableCell>
-                    <TableCell className="text-xs font-bold tabular-nums text-[#B87514]">{v.qualityPass}</TableCell>
-                    <TableCell className="font-mono text-xs font-bold text-[#475569]">{v.activeContract}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Panel>
-        )
-      }
-    ] :
-    // Universal domain fallback tabs (customized to the specific module title instead of identical hardcoded tabs)
     [
       {
         id: "domain-overview",
@@ -432,17 +272,17 @@ export function ModuleWorkspace({
                       key={d.slug}
                       to="/departments/$slug"
                       params={{ slug: d.slug }}
-                      className="flex flex-wrap items-center gap-4 px-4 py-3 text-xs font-bold transition-colors hover:bg-[#FFFFFF]"
+                      className="flex flex-wrap items-center gap-4 px-4 py-3 text-xs font-bold transition-colors hover:bg-[#F8FAFC]"
                     >
                       <span className="min-w-52 flex-1 font-bold text-[#0F172A]">{d.name}</span>
                       <Pill tone={statusTone(d.maturity)}>{d.maturity}</Pill>
-                      <span className="text-xs text-[#475569]">
+                      <span className="text-xs text-[#64748B]">
                         {d.automations} automations · {d.agents} agents
                       </span>
                       <span className="w-28">
                         <Meter value={d.adoption} />
                       </span>
-                      <span className="w-24 text-right text-xs tabular-nums font-bold text-[#0F172A]">
+                      <span className="w-24 text-right text-xs tabular-nums font-bold text-[#059669]">
                         {inr(d.annualSavings)}
                       </span>
                     </Link>
@@ -464,19 +304,19 @@ export function ModuleWorkspace({
                   key={a.slug}
                   to="/agents/$slug"
                   params={{ slug: a.slug }}
-                  className="flex flex-wrap items-center gap-3 px-4 py-3 transition-colors hover:bg-[#FFFFFF]"
+                  className="flex flex-wrap items-center gap-3 px-4 py-3 transition-colors hover:bg-[#F8FAFC]"
                 >
-                  <Bot className="size-4 text-[#D95A00]" />
+                  <Bot className="size-4 text-[#0B1F4D]" />
                   <span className="min-w-48 flex-1 text-xs font-bold text-[#0F172A]">{a.name}</span>
                   <Pill tone={statusTone(a.status)}>{a.status}</Pill>
-                  <span className="text-xs font-semibold text-[#475569]">{a.model}</span>
+                  <span className="text-xs font-semibold text-[#64748B]">{a.model}</span>
                   <span className="text-xs tabular-nums font-bold text-[#0F172A]">
                     {a.accuracy}% accuracy · {a.runs.toLocaleString()} runs
                   </span>
                 </Link>
               ))}
               {relAgents.length === 0 && (
-                <p className="px-4 py-5 text-xs text-[#475569]">
+                <p className="px-4 py-5 text-xs text-[#64748B]">
                   Platform shared agents serve this module.
                 </p>
               )}
@@ -491,7 +331,7 @@ export function ModuleWorkspace({
           <Panel title={`Automation Opportunities in ${title}`} bare>
             <Table>
               <TableHeader>
-                <TableRow className="bg-[#FFFFFF]">
+                <TableRow className="bg-[#F8FAFC]">
                   <TableHead className="font-bold text-[#0F172A]">ID</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Opportunity</TableHead>
                   <TableHead className="font-bold text-[#0F172A]">Priority</TableHead>
@@ -502,17 +342,17 @@ export function ModuleWorkspace({
               </TableHeader>
               <TableBody>
                 {relAutomations.map((a) => (
-                  <TableRow key={a.id} className="hover:bg-[#FFFFFF]">
-                    <TableCell className="font-mono text-xs font-bold text-[#D95A00]">{a.id}</TableCell>
+                  <TableRow key={a.id} className="hover:bg-[#F8FAFC]">
+                    <TableCell className="font-mono text-xs font-bold text-[#0B1F4D]">{a.id}</TableCell>
                     <TableCell className="max-w-md text-xs font-bold text-[#0F172A]">{a.title}</TableCell>
                     <TableCell>
                       <Pill tone={a.priority === "P1" ? "destructive" : a.priority === "P2" ? "warning" : "neutral"}>
                         {a.priority}
                       </Pill>
                     </TableCell>
-                    <TableCell className="text-xs font-semibold text-[#475569]">{a.complexity}</TableCell>
+                    <TableCell className="text-xs font-semibold text-[#64748B]">{a.complexity}</TableCell>
                     <TableCell><Pill tone={statusTone(a.status)}>{a.status}</Pill></TableCell>
-                    <TableCell className="text-right text-xs font-bold tabular-nums text-[#0F172A]">{inr(a.annualSavings)}</TableCell>
+                    <TableCell className="text-right text-xs font-bold tabular-nums text-[#059669]">{inr(a.annualSavings)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -532,9 +372,9 @@ export function ModuleWorkspace({
         actions={
           <>
             <Button variant="outline" size="sm">
-              <FileText className="size-4" /> Generate Report
+              <FileText className="size-4" /> Generate Executive Briefing
             </Button>
-            <Button size="sm">
+            <Button size="sm" className="bg-[#0B1F4D] text-white hover:bg-[#081636]">
               <Sparkles className="size-4" /> Open Copilot
             </Button>
           </>
@@ -555,11 +395,11 @@ export function ModuleWorkspace({
             <TabsTrigger
               key={t.id}
               value={t.id}
-              className="font-bold text-[#0F172A] data-[state=active]:bg-[#FFFFFF] data-[state=active]:text-[#D95A00]"
+              className="font-bold text-[#0F172A] data-[state=active]:bg-[#0B1F4D] data-[state=active]:text-white"
             >
               {t.label}
               {t.badge && (
-                <span className="ml-1.5 rounded bg-[#D95A00] px-1.5 py-0.2 text-[9px] font-extrabold text-white">
+                <span className="ml-1.5 rounded bg-[#0284C7] px-1.5 py-0.2 text-[9px] font-extrabold text-white">
                   {t.badge}
                 </span>
               )}
@@ -576,8 +416,8 @@ export function ModuleWorkspace({
 
       {extra}
 
-      <p className="mt-6 flex items-center gap-2 text-[11px] font-bold text-[#475569]">
-        <Zap className="size-3.5 text-[#D95A00]" /> Software-only scope: zero IoT / PLC / SCADA / machine telemetry required.
+      <p className="mt-6 flex items-center gap-2 text-[11px] font-bold text-[#64748B]">
+        <Zap className="size-3.5 text-[#059669]" /> Software-only architecture: zero IoT / PLC / SCADA / machine telemetry required.
       </p>
     </div>
   );

@@ -42,85 +42,85 @@ type ControlHubConfig = {
 
 const hubConfigs: Record<string, ControlHubConfig> = {
   ai: {
-    title: "AI WORKSPACE CONTROL HUB",
-    subtitle: "AI Agents, Copilots, Automations & Workflow Studio",
+    title: "AI WORKSPACE & AGENT CATALOG",
+    subtitle: "58 AI Agents, Live Copilots, 231 Automations & Workflow Studio",
     icon: Bot,
     submodules: [
-      { label: "AI Agents", to: "/agents", icon: Bot },
-      { label: "AI Copilots", to: "/copilots", icon: Sparkles },
-      { label: "Automation Center", to: "/automation", icon: Zap },
+      { label: "AI Agents Gallery", to: "/agents", icon: Bot },
+      { label: "Live AI Copilots", to: "/copilots", icon: Sparkles },
+      { label: "Automation Register", to: "/automation", icon: Zap },
       { label: "Workflow Studio", to: "/workflow-studio", icon: Workflow },
     ],
   },
   knowledge: {
-    title: "KNOWLEDGE CONTROL HUB",
-    subtitle: "Company Brain, Document Intelligence, Knowledge Center & Reports",
+    title: "COMPANY BRAIN & DOCUMENT INTELLIGENCE",
+    subtitle: "Enterprise Vector Knowledge Layer, RAG Engine & MTC Processing",
     icon: Brain,
     submodules: [
       { label: "Company Brain", to: "/company-brain", icon: Brain },
       { label: "Document Intelligence", to: "/documents", icon: FileSearch },
-      { label: "Knowledge Center", to: "/knowledge", icon: BookOpen },
-      { label: "Reports", to: "/reports", icon: FileBarChart },
+      { label: "Knowledge Base", to: "/knowledge", icon: BookOpen },
+      { label: "Executive Briefings", to: "/reports", icon: FileBarChart },
     ],
   },
   manufacturing: {
-    title: "MANUFACTURING CONTROL HUB",
-    subtitle: "Heat Intelligence, Mill Test Certificates, Materials, Production, Inventory & Logistics",
+    title: "STEEL MANUFACTURING INTELLIGENCE",
+    subtitle: "EAF Melt Shop Heat Control, Mill Test Certs (MTC), Production, Inventory & Logistics",
     icon: Factory,
     submodules: [
       { label: "Heat Intelligence", to: "/heat-intelligence", icon: Flame },
-      { label: "Mill Test Certificates", to: "/mtc", icon: ScrollText },
-      { label: "Materials & Grades", to: "/materials", icon: Boxes },
-      { label: "Production Documents", to: "/production", icon: Factory },
-      { label: "Inventory & Stockyard", to: "/inventory", icon: Warehouse },
-      { label: "Logistics & Dispatch", to: "/logistics", icon: Truck },
+      { label: "Mill Test Certs (MTC)", to: "/mtc", icon: ScrollText },
+      { label: "Steel Grades Master", to: "/materials", icon: Boxes },
+      { label: "Rolling & Production", to: "/production", icon: Factory },
+      { label: "Stockyard Inventory", to: "/inventory", icon: Warehouse },
+      { label: "Rake Logistics", to: "/logistics", icon: Truck },
     ],
   },
   operations: {
-    title: "OPERATIONS CONTROL HUB",
-    subtitle: "Departments, Projects, Tasks, Approvals, Risk & Quality Control",
+    title: "PLANT OPERATIONS & WORKFLOW HUB",
+    subtitle: "43 Steel Business Functions, Capex Projects, Action Tasks, Approvals & Quality",
     icon: Building2,
     submodules: [
-      { label: "Departments", to: "/departments", icon: Building2 },
-      { label: "Projects", to: "/projects", icon: FolderKanban },
-      { label: "Tasks", to: "/tasks", icon: ListTodo },
-      { label: "Approvals", to: "/approvals", icon: CheckCircle2 },
-      { label: "Risk Center", to: "/risk", icon: ShieldAlert },
+      { label: "43 Departments", to: "/departments", icon: Building2 },
+      { label: "Capex Projects", to: "/projects", icon: FolderKanban },
+      { label: "Action Tasks", to: "/tasks", icon: ListTodo },
+      { label: "Decision Approvals", to: "/approvals", icon: CheckCircle2 },
+      { label: "Plant Risk Center", to: "/risk", icon: ShieldAlert },
       { label: "Quality Control", to: "/quality", icon: BadgeCheck },
     ],
   },
   business: {
-    title: "BUSINESS CONTROL HUB",
-    subtitle: "Customers, Vendors & Procurement, Finance, HR & Compliance",
+    title: "COMMERCIAL, FINANCE & COMPLIANCE",
+    subtitle: "Order Backlog, Raw Scrap Procurement, Cost Per Tonne Ledger & ISO Compliance",
     icon: Users,
     submodules: [
-      { label: "Customers", to: "/customers", icon: Users },
+      { label: "Customer Backlog", to: "/customers", icon: Users },
       { label: "Vendors & Procurement", to: "/vendors", icon: Users },
-      { label: "Finance & Commercial", to: "/finance", icon: Wallet },
-      { label: "HR & Workforce", to: "/hr", icon: UserCog },
-      { label: "Regulatory Compliance", to: "/compliance", icon: Scale },
+      { label: "Cost Per Tonne", to: "/finance", icon: Wallet },
+      { label: "Workforce & Safety", to: "/hr", icon: UserCog },
+      { label: "ISO Compliance", to: "/compliance", icon: Scale },
     ],
   },
   platform: {
-    title: "PLATFORM CONTROL HUB",
-    subtitle: "Integrations, Security, Governance, Administration & Settings",
+    title: "SECURITY, GOVERNANCE & INTEGRATIONS",
+    subtitle: "ERP Connectors, SOC 2 Security, AI Safety Guardrails & User Administration",
     icon: Settings2,
     submodules: [
-      { label: "Integrations & Connectors", to: "/integrations", icon: Plug },
-      { label: "Security & Audit", to: "/security", icon: Lock },
-      { label: "AI Governance", to: "/governance", icon: Sliders },
+      { label: "ERP Connectors", to: "/integrations", icon: Plug },
+      { label: "Security & SOC 2", to: "/security", icon: Lock },
+      { label: "AI Safety Guardrails", to: "/governance", icon: Sliders },
       { label: "Administration", to: "/administration", icon: Settings2 },
       { label: "Settings", to: "/settings", icon: Settings2 },
     ],
   },
   executive: {
-    title: "EXECUTIVE CONTROL HUB",
-    subtitle: "Dashboard & Executive Cockpit",
+    title: "EXECUTIVE AI COMMAND CENTER",
+    subtitle: "Enterprise Overview, Value Realization Cockpit & EBITDA Impact",
     icon: Crown,
     submodules: [
-      { label: "Dashboard", to: "/", icon: LayoutDashboard },
-      { label: "Executive Cockpit", to: "/cockpit", icon: Crown },
-      { label: "Analytics", to: "/analytics", icon: FileBarChart },
+      { label: "Overview", to: "/", icon: LayoutDashboard },
+      { label: "AI Value Cockpit", to: "/cockpit", icon: Crown },
+      { label: "Analytics & ROI", to: "/analytics", icon: FileBarChart },
     ],
   },
 };
@@ -147,46 +147,43 @@ export function ModuleControlHub() {
   const HubIcon = hub.icon;
 
   return (
-    <div className="mb-5 rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-4 shadow-sm">
-      {/* Header Info */}
-      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-3">
+    <div className="mb-6 rounded-[24px] border border-[#E2E8F0] bg-[#FFFFFF] p-4 shadow-sm">
+      {/* Secondary Horizontal Pill Navigation Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="grid size-9 place-items-center rounded-lg bg-[#E05600] text-white">
-            <HubIcon className="size-5" />
+          <div className="grid size-9 shrink-0 place-items-center rounded-full bg-[#EFF6FF] text-[#2563EB]">
+            <HubIcon className="size-4.5 text-[#2563EB]" />
           </div>
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+            <h2 className="text-xs font-extrabold uppercase tracking-wider text-[#0F172A]">
               {hub.title}
             </h2>
             <p className="text-[11px] font-medium text-[#64748B]">{hub.subtitle}</p>
           </div>
         </div>
-        <span className="rounded-full border border-[#E2E8F0] px-3 py-1 text-[11px] font-bold text-[#64748B]">
-          {hub.submodules.length} Submodules
-        </span>
-      </div>
 
-      {/* Horizontal Submodule Navigation Pills */}
-      <div className="flex flex-wrap gap-2 border-t border-[#E2E8F0] pt-3">
-        {hub.submodules.map((sub) => {
-          const active = sub.to === "/" ? pathname === "/" : pathname.startsWith(sub.to);
-          const SubIcon = sub.icon;
-          return (
-            <Link
-              key={sub.to}
-              to={sub.to}
-              className={cn(
-                "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-bold transition-all",
-                active
-                  ? "border-[#E05600] bg-[#E05600] text-white shadow-sm"
-                  : "border-[#E2E8F0] bg-[#FFFFFF] text-[#64748B] hover:border-[#E05600] hover:bg-[#FFF7ED] hover:text-[#E05600]",
-              )}
-            >
-              <SubIcon className="size-3.5" />
-              <span>{sub.label}</span>
-            </Link>
-          );
-        })}
+        {/* Horizontal Pills */}
+        <div className="flex flex-wrap items-center gap-1.5 rounded-full bg-[#F8FAFC] p-1 border border-[#E2E8F0]">
+          {hub.submodules.map((sub) => {
+            const active = sub.to === "/" ? pathname === "/" : pathname.startsWith(sub.to);
+            const SubIcon = sub.icon;
+            return (
+              <Link
+                key={sub.to}
+                to={sub.to}
+                className={cn(
+                  "flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-extrabold transition-all duration-150",
+                  active
+                    ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/25"
+                    : "text-[#475569] hover:bg-[#FFFFFF] hover:text-[#2563EB]",
+                )}
+              >
+                <SubIcon className="size-3.5" />
+                <span>{sub.label}</span>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
